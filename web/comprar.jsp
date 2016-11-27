@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Comprar Crédito</h1>
-        <form action="/comprarCredito" method="post">
+        <form action="/comprarcredito" method="post">
             Nome Titular: <input name="nomeTitular"><br>
             Numero Cartao: <input name="numeroCartao" type="number"><br>
             Codigo Segurança: <input name="codigoSeguranca" type="number"><br>

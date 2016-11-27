@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Logar extends HttpServlet {       
     UsuarioController uController = new UsuarioController();
     
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -51,8 +50,6 @@ public class Logar extends HttpServlet {
         user.setUsername(username);
         user.setPassword(password);
         user = uController.logar(user);                
-        
-        System.out.println("entrou logar");
         
         if(user != null){            
             request.getSession().setAttribute("user", user);

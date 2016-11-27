@@ -50,7 +50,38 @@
     <div class="col-md-4 col-sm-offset-4">
       <div class="input-group" >
 	    <label class="input-group input-group-addon"><b class="glyphicon glyphicon-user"></b></label>
-	    <input autofocus type="text" class="form-control" id="cmpLogin" placeholder="Login ou email">
+            <input autofocus type="text" class="form-control" id="cmpLogin" placeholder="Login" name="username">
+      </div>
+	</div>
+  </div>
+  
+  <br>
+  <div class="row">
+    <div class="col-md-4 col-sm-offset-4">
+      <div class="input-group" >
+	    <label class="input-group input-group-addon"><b class="glyphicon glyphicon-user"></b></label>
+            <input autofocus type="text" class="form-control" id="cmpLogin" placeholder="email" name="email">
+      </div>
+	</div>
+  </div>
+  
+  <br>
+  <div class="row">
+    <div class="col-md-4 col-sm-offset-4">
+      <div class="input-group" >
+	    <label class="input-group input-group-addon"><b class="glyphicon glyphicon-user"></b></label>
+            <input autofocus type="text" class="form-control" id="cmpLogin" placeholder="Nome completo" name="nome">
+      </div>
+	</div>
+  </div>
+
+  
+  <br>
+  <div class="row">
+    <div class="col-md-4 col-sm-offset-4">
+      <div class="input-group" >
+	    <label class="input-group input-group-addon"><b class="glyphicon glyphicon-user"></b></label>
+            <input autofocus type="text" class="form-control" id="cmpLogin" placeholder="Informe seu cpf" name="cpf">
       </div>
 	</div>
   </div>
@@ -61,7 +92,7 @@
     <div class="col-md-4 col-sm-offset-4">
       <div class="input-group">
 	    <label class="input-group input-group-addon"><b class="glyphicon glyphicon-log-in"></b></label>
-	    <input type="password" class="form-control" id="cmpSenha" placeholder="Senha">
+            <input type="password" class="form-control" id="cmpSenha" placeholder="Senha" name="password">
       </div>
 	</div>
   </div>
@@ -72,7 +103,7 @@
     <div class="col-md-4 col-sm-offset-4">
       <div class="input-group">
 	    <label class="input-group input-group-addon"><b class="glyphicon glyphicon-log-in"></b></label>
-	    <input type="password" class="form-control" id="cmpSenha2" placeholder="Confirme sua Senha">
+	    <input type="password" class="form-control" id="cmpSenha2" placeholder="Confirme sua Senha" name="passwordRepeat">
       </div>
 	</div>
   </div> 

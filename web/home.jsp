@@ -173,8 +173,10 @@
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Abrir chamado</a>
-                    </li>
-
+                    </li>                    
+                    <li>
+                        <a href="comprar.jsp"><i class="glyphicon glyphicon-usd"></i> Comprar Crédito</a>
+                    </li>                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

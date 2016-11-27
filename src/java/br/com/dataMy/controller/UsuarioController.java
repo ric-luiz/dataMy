@@ -23,4 +23,10 @@ public class UsuarioController {
         return uDao.select(user);
     }
     
+    /**
+     * Inserir usuário
+     */
+    public void InserirUser(Usuario user){
+        uDao.insert(user);
+    }
 }

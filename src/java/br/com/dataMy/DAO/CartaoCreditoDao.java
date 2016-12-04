@@ -34,7 +34,7 @@ public class CartaoCreditoDao extends ConexaoDao{
      * Retorna uma lista de cartões associados a um usuário
      */
     public ArrayList<CartaoCredito> select(Usuario user){
-        ArrayList<CartaoCredito> cartoes = null;
+        ArrayList<CartaoCredito> cartoes = new ArrayList<CartaoCredito>();
         
         try {                        
             

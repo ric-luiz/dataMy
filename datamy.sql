@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `datamy`
 --
+CREATE DATABASE IF NOT EXISTS `datamy` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `datamy`;
 
 -- --------------------------------------------------------
 
@@ -27,17 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cartaocredito` (
-  `idcartaoCredito` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `numero` int(11) NOT NULL,
-  `idUsuario` int(11) NOT NULL
+  `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `cartaocredito`
---
-
-INSERT INTO `cartaocredito` (`idcartaoCredito`, `numero`, `idUsuario`) VALUES
-(1, 123, 1);
 
 -- --------------------------------------------------------
 
@@ -46,15 +41,15 @@ INSERT INTO `cartaocredito` (`idcartaoCredito`, `numero`, `idUsuario`) VALUES
 --
 
 CREATE TABLE `chamado` (
-  `idChamado` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
   `dataInicio` date NOT NULL,
   `dataFim` date DEFAULT NULL,
   `status` varchar(45) NOT NULL DEFAULT 'Em aberto',
   `descricao` varchar(255) NOT NULL,
   `pathImagem` varchar(255) DEFAULT NULL,
-  `idUsuario` int(11) NOT NULL,
-  `idRelatorioChamados` int(11) NOT NULL
+  `usuario_id` int(11) NOT NULL,
+  `relatorioChamado_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -64,21 +59,11 @@ CREATE TABLE `chamado` (
 --
 
 CREATE TABLE `compracredito` (
-  `idCompraCredito` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `valorComprado` double NOT NULL,
-  `dataCompra` date NOT NULL,
-  `idUsuario` time NOT NULL
+  `dataCompra` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `usuario_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `compracredito`
---
-
-INSERT INTO `compracredito` (`idCompraCredito`, `valorComprado`, `dataCompra`, `idUsuario`) VALUES
-(1, 312312, '2016-12-12', '00:00:01'),
-(2, 1231321313, '2016-12-12', '00:00:01'),
-(3, 12, '2016-12-12', '00:00:01'),
-(4, 100029444950, '2016-12-12', '00:00:01');
 
 -- --------------------------------------------------------
 
@@ -90,7 +75,7 @@ CREATE TABLE `comprarelatorio` (
   `idCompraRelatorio` int(11) NOT NULL,
   `valorRelatorio` double NOT NULL,
   `dataCompraRelatorio` date NOT NULL,
-  `idUsuario` int(11) NOT NULL
+  `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -100,9 +85,9 @@ CREATE TABLE `comprarelatorio` (
 --
 
 CREATE TABLE `estatistica` (
-  `idEstatistica` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `caminhoArquivo` varchar(255) NOT NULL,
-  `idCompraRelatorio` int(11) NOT NULL
+  `compraRelatorio_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -112,9 +97,9 @@ CREATE TABLE `estatistica` (
 --
 
 CREATE TABLE `relatoriochamados` (
-  `idRelatorioChamados` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `tipo` varchar(100) NOT NULL DEFAULT 'Diario',
-  `dataRelatorioChamado` date NOT NULL,
+  `dataRelatorioChamado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `caminhoArquivo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -125,7 +110,7 @@ CREATE TABLE `relatoriochamados` (
 --
 
 CREATE TABLE `transacoes` (
-  `idTransacoes` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `dataTransacao` date NOT NULL,
   `tipo` varchar(100) NOT NULL,
   `caminhoArquivo` varchar(255) NOT NULL
@@ -145,7 +130,7 @@ CREATE TABLE `usuario` (
   `status` varchar(45) NOT NULL DEFAULT 'confirmacao',
   `username` varchar(80) NOT NULL,
   `password` varchar(80) NOT NULL,
-  `idTransacoes` int(11) DEFAULT NULL,
+  `transacoes_id` int(11) DEFAULT NULL,
   `nomecompleto` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -153,7 +138,7 @@ CREATE TABLE `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `cpf`, `email`, `perfil`, `status`, `username`, `password`, `idTransacoes`, `nomecompleto`) VALUES
+INSERT INTO `usuario` (`idUsuario`, `cpf`, `email`, `perfil`, `status`, `username`, `password`, `transacoes_id`, `nomecompleto`) VALUES
 (1, '117.237.364-73', 'pablosfictions@gmail.com', 'padrao', 'confirmacao', 'PabloAraujo', '123', NULL, 'hugo pablo');
 
 --
@@ -164,49 +149,49 @@ INSERT INTO `usuario` (`idUsuario`, `cpf`, `email`, `perfil`, `status`, `usernam
 -- Indexes for table `cartaocredito`
 --
 ALTER TABLE `cartaocredito`
-  ADD PRIMARY KEY (`idcartaoCredito`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `chamado`
 --
 ALTER TABLE `chamado`
-  ADD PRIMARY KEY (`idChamado`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `compracredito`
 --
 ALTER TABLE `compracredito`
-  ADD PRIMARY KEY (`idCompraCredito`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `comprarelatorio`
 --
 ALTER TABLE `comprarelatorio`
-  ADD PRIMARY KEY (`idCompraRelatorio`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `estatistica`
 --
 ALTER TABLE `estatistica`
-  ADD PRIMARY KEY (`idEstatistica`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `relatoriochamados`
 --
 ALTER TABLE `relatoriochamados`
-  ADD PRIMARY KEY (`idRelatorioChamados`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `transacoes`
 --
 ALTER TABLE `transacoes`
-  ADD PRIMARY KEY (`idTransacoes`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idUsuario`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -216,22 +201,22 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `cartaocredito`
 --
 ALTER TABLE `cartaocredito`
-  MODIFY `idcartaoCredito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `chamado`
 --
 ALTER TABLE `chamado`
-  MODIFY `idChamado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `compracredito`
 --
 ALTER TABLE `compracredito`
-  MODIFY `idCompraCredito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

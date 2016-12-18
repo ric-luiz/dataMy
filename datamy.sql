@@ -72,7 +72,7 @@ CREATE TABLE `compracredito` (
 --
 
 CREATE TABLE `comprarelatorio` (
-  `idCompraRelatorio` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `valorRelatorio` double NOT NULL,
   `dataCompraRelatorio` date NOT NULL,
   `usuario_id` int(11) NOT NULL
@@ -123,7 +123,7 @@ CREATE TABLE `transacoes` (
 --
 
 CREATE TABLE `usuario` (
-  `idUsuario` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `cpf` varchar(15) NOT NULL,
   `email` varchar(45) NOT NULL,
   `perfil` varchar(45) NOT NULL DEFAULT 'padrao',

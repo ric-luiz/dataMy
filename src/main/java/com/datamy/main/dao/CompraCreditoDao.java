@@ -1,6 +1,7 @@
 package com.datamy.main.dao;
 
 import com.datamy.main.bean.CompraCredito;
+import com.datamy.main.bean.CompraRelatorio;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,5 +33,30 @@ public class CompraCreditoDao extends ConexaoDao{
         } finally {
             fecharConexao();
         }
+    }
+    
+    public boolean verificarCreditoSuficiente(CompraRelatorio compra){
+        CriarConexao();
+        boolean possuiCredito = false;
+        
+        try {            
+            resultado = consulta.executeQuery("SELECT * FROM compracredito WHERE usuario_id = "+compra.getUser().getId());
+            double valor = 0;
+            while(resultado.next()){           
+                valor = resultado.getInt("valorComprado");
+            }                        
+            
+            //Caso o usuario tenha credito suficiente para comprar aquele relatorio
+            if(valor >= compra.getValorRelatorio()){
+                possuiCredito = true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+        
+        return possuiCredito;
     }
 }

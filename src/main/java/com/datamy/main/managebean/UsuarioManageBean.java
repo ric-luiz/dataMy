@@ -26,8 +26,8 @@ public class UsuarioManageBean implements Serializable{
         
     //Logar no sistema
     public String logar(){
-        this.usuario = uDao.select(usuario); // jogar o usuario na varivel de sessão
-        if(this.usuario.getUsername() != null){ //verifica se houve algum retorno da pesquisa no banco
+        this.usuario = uDao.select(this.usuario); // jogar o usuario na varivel de sessão
+        if(this.usuario != null){ //verifica se houve algum retorno da pesquisa no banco
             return "home.xhtml";
         } else {
             return null;

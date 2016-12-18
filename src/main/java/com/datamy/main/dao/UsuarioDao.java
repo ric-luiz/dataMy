@@ -33,7 +33,7 @@ public class UsuarioDao extends ConexaoDao{
             resultado = preparacao.executeQuery();
             
             while(resultado.next()){
-                usuario = new Usuario(resultado.getInt("id"), resultado.getString("nome"), resultado.getString("perfil"), 
+                usuario = new Usuario(resultado.getInt("id"), resultado.getString("nomecompleto"), resultado.getString("perfil"), 
                         resultado.getString("status"), resultado.getString("username"), resultado.getString("password"), resultado.getString("email"),resultado.getString("cpf"));
             }
             
@@ -61,7 +61,7 @@ public class UsuarioDao extends ConexaoDao{
             resultado = preparacao.executeQuery();
             
             while(resultado.next()){
-                usuario = new Usuario(resultado.getInt("id"), resultado.getString("nome"), resultado.getString("perfil"), 
+                usuario = new Usuario(resultado.getInt("id"), resultado.getString("nomecompleto"), resultado.getString("perfil"), 
                         resultado.getString("status"), resultado.getString("username"), resultado.getString("password"), resultado.getString("email"),resultado.getString("cpf"));
             }
             
@@ -86,7 +86,7 @@ public class UsuarioDao extends ConexaoDao{
             resultado = consulta.executeQuery("SELECT * FROM usuario");
             
             while(resultado.next()){
-                usuarios.add(new Usuario(resultado.getInt("id"), resultado.getString("nome"), resultado.getString("perfil"), 
+                usuarios.add(new Usuario(resultado.getInt("id"), resultado.getString("nomecompleto"), resultado.getString("perfil"), 
                         resultado.getString("status"), resultado.getString("username"), resultado.getString("password"), resultado.getString("email"),resultado.getString("cpf")));
             }
             
@@ -106,7 +106,7 @@ public class UsuarioDao extends ConexaoDao{
     public void insert(Usuario user){
         CriarConexao();
         try {
-            preparacao = conexao.prepareStatement("INSERT INTO `usuario`(`nome`,`username`, `password`, `email`, `cpf`) VALUES (?,?,?,?,?)");
+            preparacao = conexao.prepareStatement("INSERT INTO `usuario`(`nomecompleto`,`username`, `password`, `email`, `cpf`) VALUES (?,?,?,?,?)");
             preparacao.setString(1, user.getNome());
             preparacao.setString(2, user.getUsername());
             preparacao.setString(3, user.getPassword());

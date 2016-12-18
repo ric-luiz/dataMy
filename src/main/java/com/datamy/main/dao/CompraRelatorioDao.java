@@ -19,8 +19,9 @@ public class CompraRelatorioDao extends ConexaoDao{
         
         try {
             
-            preparacao = conexao.prepareStatement("INSERT INTO `comprarelatorio`(`valorRelatorio`, `dataCompraRelatorio`, `usuario_id`) VALUES (?,?,?))");
-            
+            preparacao = conexao.prepareStatement("INSERT INTO `comprarelatorio`(`valorRelatorio`,`usuario_id`) VALUES (?,?)");
+            preparacao.setDouble(1, compra.getValorRelatorio());            
+            preparacao.setDouble(2, compra.getUser().getId());
             preparacao.executeUpdate();
             
         } catch (SQLException ex) {
@@ -29,5 +30,5 @@ public class CompraRelatorioDao extends ConexaoDao{
             fecharConexao();
         }
     }
-    
+        
 }

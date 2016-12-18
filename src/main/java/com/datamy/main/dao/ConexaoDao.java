@@ -1,5 +1,6 @@
 package com.datamy.main.dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,7 +14,8 @@ import java.util.logging.Logger;
  *
  * @author ric_l
  */
-public class ConexaoDao{
+public class ConexaoDao implements Serializable{
+    private static final long serialVersionUID = 1L;
     
     protected static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     protected static final String BANCO = "jdbc:mysql://localhost:3306/dataMy";

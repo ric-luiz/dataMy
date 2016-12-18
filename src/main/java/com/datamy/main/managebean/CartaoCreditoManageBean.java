@@ -30,6 +30,7 @@ public class CartaoCreditoManageBean implements Serializable{
     //Inserir um cartão caso ele ja n exista no banco
     public void inserirCartao(){
         if(cDao.select(cartaoCredito).size() == 0){
+            System.out.println(user.getNome());
             cartaoCredito.setUser(user); // CUIDADO PARA QUE O USER N VENHA NULO DO FORM
             cDao.insert(cartaoCredito);
         }

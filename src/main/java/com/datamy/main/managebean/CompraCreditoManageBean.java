@@ -31,7 +31,7 @@ public class CompraCreditoManageBean implements Serializable{
     public String comprar(){        
         compraCredito.setUser(user);
         cDao.insert(compraCredito);
-        return null;
+        return "home.xhtml";
     }
     
     public CompraCredito getCompraCredito() {

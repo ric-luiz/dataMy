@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Dez-2016 às 15:59
+-- Generation Time: 19-Dez-2016 às 00:11
 -- Versão do servidor: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `datamy`
 --
-CREATE DATABASE IF NOT EXISTS `datamy` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `datamy`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,8 @@ USE `datamy`;
 --
 
 CREATE TABLE `cartaocredito` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
+  `nomeTitular` varchar(255) NOT NULL,
   `numero` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -59,11 +58,19 @@ CREATE TABLE `chamado` (
 --
 
 CREATE TABLE `compracredito` (
-  `id` int(11) NOT NULL,
-  `valorComprado` double NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
+  `valorComprado` int(11) NOT NULL,
   `dataCompra` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `usuario_id` int NOT NULL
+  `numeroparcelas` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `compracredito`
+--
+
+INSERT INTO `compracredito` (`id`, `valorComprado`, `dataCompra`, `numeroparcelas`, `usuario_id`) VALUES
+(16, 1000, '2016-12-18 22:17:37', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -72,9 +79,9 @@ CREATE TABLE `compracredito` (
 --
 
 CREATE TABLE `comprarelatorio` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `valorRelatorio` double NOT NULL,
-  `dataCompraRelatorio` date NOT NULL,
+  `dataCompraRelatorio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -123,7 +130,7 @@ CREATE TABLE `transacoes` (
 --
 
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `cpf` varchar(15) NOT NULL,
   `email` varchar(45) NOT NULL,
   `perfil` varchar(45) NOT NULL DEFAULT 'padrao',
@@ -138,8 +145,9 @@ CREATE TABLE `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `cpf`, `email`, `perfil`, `status`, `username`, `password`, `transacoes_id`, `nomecompleto`) VALUES
-(1, '117.237.364-73', 'pablosfictions@gmail.com', 'padrao', 'confirmacao', 'PabloAraujo', '123', NULL, 'hugo pablo');
+INSERT INTO `usuario` (`id`, `cpf`, `email`, `perfil`, `status`, `username`, `password`, `transacoes_id`, `nomecompleto`) VALUES
+(1, '117.237.364-73', 'pablosfictions@gmail.com', 'padrao', 'confirmacao', 'PabloAraujo', '123', NULL, 'hugo pablo'),
+(2, '01646998480', 'luiz@luiz', 'padrao', 'confirmacao', 'luiz', '123', NULL, 'luiz silva');
 
 --
 -- Indexes for dumped tables
@@ -152,12 +160,6 @@ ALTER TABLE `cartaocredito`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `chamado`
---
-ALTER TABLE `chamado`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `compracredito`
 --
 ALTER TABLE `compracredito`
@@ -167,24 +169,6 @@ ALTER TABLE `compracredito`
 -- Indexes for table `comprarelatorio`
 --
 ALTER TABLE `comprarelatorio`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `estatistica`
---
-ALTER TABLE `estatistica`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `relatoriochamados`
---
-ALTER TABLE `relatoriochamados`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `transacoes`
---
-ALTER TABLE `transacoes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -201,22 +185,22 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `cartaocredito`
 --
 ALTER TABLE `cartaocredito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `chamado`
---
-ALTER TABLE `chamado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `compracredito`
 --
 ALTER TABLE `compracredito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `comprarelatorio`
+--
+ALTER TABLE `comprarelatorio`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

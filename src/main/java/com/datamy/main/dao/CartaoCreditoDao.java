@@ -27,7 +27,7 @@ public class CartaoCreditoDao extends ConexaoDao{
         CriarConexao();
         try {
             
-            preparacao = conexao.prepareStatement("INSERT INTO `cartaocredito`(`nomeTitular`, `numeroCartao`, `usuario_id`) VALUES (?,?,?)");
+            preparacao = conexao.prepareStatement("INSERT INTO `cartaocredito`(`nomeTitular`, `numero`, `usuario_id`) VALUES (?,?,?)");
             preparacao.setString(1, cartao.getNomeTitular());
             preparacao.setString(2, cartao.getNumeroCartao());
             preparacao.setInt(3, cartao.getUser().getId());
@@ -75,12 +75,12 @@ public class CartaoCreditoDao extends ConexaoDao{
         
         try {                        
             
-            preparacao = conexao.prepareStatement("SELECT * FROM cartaocredito WHERE numeroCartao = ?");
+            preparacao = conexao.prepareStatement("SELECT * FROM cartaocredito WHERE numero = ?");
             preparacao.setInt(1, Integer.parseInt(cartao.getNumeroCartao()));
             resultado = preparacao.executeQuery();
             
             while(resultado.next()){
-                cartoes.add(new CartaoCredito(resultado.getInt("id"), resultado.getString("nomeTitular"), resultado.getString("numeroCartao"), uDao.select(resultado.getInt("usuario_id"))));
+                cartoes.add(new CartaoCredito(resultado.getInt("id"), resultado.getString("nomeTitular"), resultado.getString("numero"), uDao.select(resultado.getInt("usuario_id"))));
             }
             
         } catch (SQLException ex) {

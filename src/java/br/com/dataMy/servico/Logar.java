@@ -1,6 +1,6 @@
 package br.com.dataMy.servico;
 
-import br.com.dataMy.beans.Usuario;
+import br.com.dataMy.pojo.Usuario;
 import br.com.dataMy.controller.UsuarioController;
 import java.io.IOException;
 import javax.servlet.ServletException;

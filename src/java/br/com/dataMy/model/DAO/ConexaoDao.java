@@ -1,4 +1,4 @@
-package br.com.dataMy.DAO;
+package br.com.dataMy.model.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class ConexaoDao{
     
     protected static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    protected static final String BANCO = "jdbc:mysql://localhost:3306/dataMy";
+    protected static final String BANCO = "jdbc:mysql://localhost:3306/datamy";
     
     protected static final String USER = "root";
     protected static final String PASS = "";

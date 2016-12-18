@@ -5,14 +5,12 @@ package br.com.dataMy.beans;
  * @author ric_l
  */
 public class CartaoCredito {
-    private int id;
-    private String nomeTitular;
+    private int idCartaoCredito;   
     private String numeroCartao;
     private int userId;
 
-    public CartaoCredito(int id, String nomeTitular, String numeroCartao, int userId) {
-        this.id = id;
-        this.nomeTitular = nomeTitular;
+    public CartaoCredito(int idCartaoCredito, String numeroCartao, int userId) {
+        this.idCartaoCredito = idCartaoCredito;
         this.numeroCartao = numeroCartao;
         this.userId = userId;
     }
@@ -21,19 +19,11 @@ public class CartaoCredito {
     }
     
     public int getId() {
-        return id;
+        return idCartaoCredito;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNomeTitular() {
-        return nomeTitular;
-    }
-
-    public void setNomeTitular(String nomeTitular) {
-        this.nomeTitular = nomeTitular;
+    public void setId(int idCartaoCredito) {
+        this.idCartaoCredito = idCartaoCredito;
     }
 
     public String getNumeroCartao() {

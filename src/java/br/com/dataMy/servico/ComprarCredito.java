@@ -1,7 +1,7 @@
 package br.com.dataMy.servico;
 
 import br.com.dataMy.beans.CartaoCredito;
-import br.com.dataMy.beans.Usuario;
+import br.com.dataMy.pojo.Usuario;
 import br.com.dataMy.beans.CompraCredito;
 import br.com.dataMy.controller.CartaoCreditoController;
 import br.com.dataMy.controller.CompraCreditoController;
@@ -56,16 +56,14 @@ public class ComprarCredito extends HttpServlet {
             if(cartoes != null && cartoes.size() > 0){ //caso o usuario ja tenha um cartao cadastrado
                 cartao = cartoes.get(0);
             } else { //caso seja preciso criar um novo cartao
-                cartao = new CartaoCredito();
-                cartao.setNomeTitular(request.getParameter("nomeTitular"));
+                cartao = new CartaoCredito();                
                 cartao.setNumeroCartao(request.getParameter("numeroCartao"));
                 cartao.setUserId(user.getId());
                 cartaoController.inserirCartao(cartao);
             }                        
             
             //definimos a nova compra
-            compra = new CompraCredito();
-            compra.setNumeroParcelas(Integer.parseInt(request.getParameter("parcela")));
+            compra = new CompraCredito();            
             compra.setValorComprado(Integer.parseInt(request.getParameter("credito")));
             compra.setUsuarioId(user.getId());            
             compraController.inserirCompra(compra);

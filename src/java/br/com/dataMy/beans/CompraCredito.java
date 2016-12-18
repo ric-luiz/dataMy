@@ -7,17 +7,15 @@ import java.util.Date;
  * @author ric_l
  */
 public class CompraCredito {
-    private int id;
+    private int idCompraCredito;
     private int valorComprado;
     private Date dataCompra;
-    private int numeroParcelas;
     private int usuarioId;
 
-    public CompraCredito(int id, int valorComprado, Date dataCompra, int numeroParcelas, int usuarioId) {
-        this.id = id;
+    public CompraCredito(int idCompraCredito, int valorComprado, Date dataCompra, int usuarioId) {
+        this.idCompraCredito = idCompraCredito;
         this.valorComprado = valorComprado;
-        this.dataCompra = dataCompra;
-        this.numeroParcelas = numeroParcelas;
+        this.dataCompra = dataCompra;        
         this.usuarioId = usuarioId;
     }
 
@@ -25,11 +23,11 @@ public class CompraCredito {
     }
     
     public int getId() {
-        return id;
+        return idCompraCredito;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idCompraCredito) {
+        this.idCompraCredito = idCompraCredito;
     }
 
     public int getValorComprado() {
@@ -47,15 +45,7 @@ public class CompraCredito {
     public void setDataCompra(Date dataCompra) {
         this.dataCompra = dataCompra;
     }
-
-    public int getNumeroParcelas() {
-        return numeroParcelas;
-    }
-
-    public void setNumeroParcelas(int numeroParcelas) {
-        this.numeroParcelas = numeroParcelas;
-    }
-
+  
     public int getUsuarioId() {
         return usuarioId;
     }

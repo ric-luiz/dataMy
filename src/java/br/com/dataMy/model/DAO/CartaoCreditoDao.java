@@ -1,7 +1,7 @@
-package br.com.dataMy.DAO;
+package br.com.dataMy.model.DAO;
 
 import br.com.dataMy.beans.CartaoCredito;
-import br.com.dataMy.beans.Usuario;
+import br.com.dataMy.pojo.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -19,10 +19,9 @@ public class CartaoCreditoDao extends ConexaoDao{
     public void insert(CartaoCredito cartao){
         try {
             
-            preparacao = conexao.prepareStatement("INSERT INTO `cartaocredito`(`nomeTitular`, `numeroCartao`, `usuario_id`) VALUES (?,?,?)");
-            preparacao.setString(1, cartao.getNomeTitular());
-            preparacao.setString(2, cartao.getNumeroCartao());
-            preparacao.setInt(3, cartao.getUserId());
+            preparacao = conexao.prepareStatement("INSERT INTO `cartaocredito`(`numero`, `usuario_id`) VALUES (?,?)");            
+            preparacao.setString(1, cartao.getNumeroCartao());
+            preparacao.setInt(2, cartao.getUserId());
             preparacao.executeUpdate();
             
         } catch (SQLException ex) {
@@ -43,7 +42,9 @@ public class CartaoCreditoDao extends ConexaoDao{
             resultado = preparacao.executeQuery();
             
             while(resultado.next()){
-                cartoes.add(new CartaoCredito(resultado.getInt("id"), resultado.getString("nomeTitular"), resultado.getString("numeroCartao"), resultado.getInt("usuario_id")));
+                cartoes.add(new CartaoCredito(resultado.getInt("idCartaoCredito"), 
+                        resultado.getString("numero"), 
+                        resultado.getInt("usuario_id")));
             }
             
         } catch (SQLException ex) {

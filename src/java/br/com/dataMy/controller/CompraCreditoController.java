@@ -1,6 +1,6 @@
 package br.com.dataMy.controller;
 
-import br.com.dataMy.DAO.CompraCreditoDao;
+import br.com.dataMy.model.DAO.CompraCreditoDao;
 import br.com.dataMy.beans.CompraCredito;
 
 /**

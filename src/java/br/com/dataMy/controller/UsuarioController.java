@@ -1,7 +1,7 @@
 package br.com.dataMy.controller;
 
-import br.com.dataMy.DAO.UsuarioDao;
-import br.com.dataMy.beans.Usuario;
+import br.com.dataMy.model.DAO.UsuarioDao;
+import br.com.dataMy.pojo.Usuario;
 
 /**
  *

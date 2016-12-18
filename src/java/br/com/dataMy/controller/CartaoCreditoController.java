@@ -1,8 +1,8 @@
 package br.com.dataMy.controller;
 
-import br.com.dataMy.DAO.CartaoCreditoDao;
+import br.com.dataMy.model.DAO.CartaoCreditoDao;
 import br.com.dataMy.beans.CartaoCredito;
-import br.com.dataMy.beans.Usuario;
+import br.com.dataMy.pojo.Usuario;
 import java.util.ArrayList;
 
 /**

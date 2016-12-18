@@ -1,6 +1,6 @@
-package br.com.dataMy.DAO;
+package br.com.dataMy.model.DAO;
 
-import br.com.dataMy.beans.Usuario;
+import br.com.dataMy.pojo.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -32,8 +32,14 @@ public class UsuarioDao extends ConexaoDao{
             resultado = preparacao.executeQuery();
             
             while(resultado.next()){
-                usuario = new Usuario(resultado.getInt("id"), resultado.getString("nome"), resultado.getString("perfil"), 
-                        resultado.getString("status"), resultado.getString("username"), resultado.getString("password"), resultado.getString("email"),resultado.getString("cpf"));
+                usuario = new Usuario(resultado.getInt("idUsuario"), 
+                        resultado.getString("nome"), 
+                        resultado.getString("perfil"), 
+                        resultado.getString("status"), 
+                        resultado.getString("username"), 
+                        resultado.getString("password"), 
+                        resultado.getString("email"),
+                        resultado.getString("cpf"));
             }
             
         } catch (SQLException ex) {
@@ -54,7 +60,7 @@ public class UsuarioDao extends ConexaoDao{
             resultado = consulta.executeQuery("SELECT * FROM usuario");
             
             while(resultado.next()){
-                usuarios.add(new Usuario(resultado.getInt("id"), resultado.getString("nome"), resultado.getString("perfil"), 
+                usuarios.add(new Usuario(resultado.getInt("idUsuario"), resultado.getString("nome"), resultado.getString("perfil"), 
                         resultado.getString("status"), resultado.getString("username"), resultado.getString("password"), resultado.getString("email"),resultado.getString("cpf")));
             }
             

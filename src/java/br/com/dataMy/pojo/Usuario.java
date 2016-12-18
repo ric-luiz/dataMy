@@ -1,11 +1,11 @@
-package br.com.dataMy.beans;
+package br.com.dataMy.pojo;
 
 /**
  *
  * @author ric_l
  */
 public class Usuario {
-    private int id;
+    private int idUsuario;
     private String nome;
     private String perfil;
     private String status;
@@ -17,8 +17,8 @@ public class Usuario {
     public Usuario() {
     }    
 
-    public Usuario(int id, String nome, String perfil, String status, String username, String password, String email, String cpf) {
-        this.id = id;
+    public Usuario(int idUsuario, String nome, String perfil, String status, String username, String password, String email, String cpf) {
+        this.idUsuario = idUsuario;
         this.nome = nome;
         this.perfil = perfil;
         this.status = status;
@@ -29,11 +29,11 @@ public class Usuario {
     }        
 
     public int getId() {
-        return id;
+        return idUsuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNome() {

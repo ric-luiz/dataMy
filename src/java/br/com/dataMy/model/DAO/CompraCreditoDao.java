@@ -1,4 +1,4 @@
-package br.com.dataMy.DAO;
+package br.com.dataMy.model.DAO;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -18,11 +18,10 @@ public class CompraCreditoDao extends ConexaoDao{
     public void insert(CompraCredito compra){
         try {
             
-            preparacao = conexao.prepareStatement("INSERT INTO `compracredito`(`valorComprado`, `dataCompra`, `numeroParcelas`, `usuario_id`) VALUES (?,?,?,?)");
+            preparacao = conexao.prepareStatement("INSERT INTO `compracredito`(`valorComprado`, `dataCompra`, `usuario_id`) VALUES (?,?,?)");
             preparacao.setInt(1, compra.getValorComprado());
             preparacao.setDate(2, (Date) compra.getDataCompra());
-            preparacao.setInt(3, compra.getNumeroParcelas());
-            preparacao.setInt(4,compra.getUsuarioId());
+            preparacao.setInt(3,compra.getUsuarioId());
             preparacao.executeUpdate();
             
         } catch (SQLException ex) {

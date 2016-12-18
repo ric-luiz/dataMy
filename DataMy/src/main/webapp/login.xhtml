@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >
+    <head>    
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+        <title>DataMy</title>
+    </head>
+    <body>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+        <!--Título do Datamy --> 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-sm-offset-4">
+                    <h3 class="text-center text-primary">
+                        DataMy Administrativo
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div id="blocoLogin" class="container">
+
+            <!--formulário do login -->            
+            <h:form>
+                <!--col-sm-offset-6 deixa o conteúdo na outra div -->    
+                <div class="row">
+                    <div class="col-md-4 col-sm-offset-4">
+                        <div class="input-group" >
+                            <label class="input-group input-group-addon"><b class="glyphicon glyphicon-user"></b></label>                            
+                            <h:inputText styleClass="form-control" id="cmpLogin" required="true" value="#{usuario.usuario.username}" a:placeholder="Login"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!--formulário da senha -->    
+                <br/>
+                <div class="row">
+                    <div class="col-md-4 col-sm-offset-4">
+                        <div class="input-group">
+                            <label class="input-group input-group-addon"><b class="glyphicon glyphicon-log-in"></b></label>                            
+                            <h:inputSecret styleClass="form-control" value="#{usuario.usuario.password}" a:placeholder="senha" />
+                        </div>
+                    </div>
+                </div>
+
+                <!--link caso o usuario esqueceu a senha -->
+                <div class="row">
+                    <div class="col-md-4 col-sm-offset-4 text-right">
+                        <a href="esqueceu.xhtml">Esqueceu sua senha?</a>
+                    </div>
+                </div>
+
+                <!--link para cadastrar -->
+                <br/>
+                <div class="row">
+                    <div class="col-md-4 col-sm-offset-4 text-right">
+                        <a href="cadastro.xhtml">Cadastre-se</a>
+                    </div>
+                </div>
+
+
+                <!--botão de login -->
+                <br/>
+                <div class="row">
+                    <div class="col-md-4 col-sm-offset-4 text-right">                        
+                        <h:commandButton value="Login" styleClass="btn btn-default" id="btnLogin" action="#{usuario.logar()}" />
+                    </div>
+                </div>
+            </h:form>            
+        </div>
+    </body>
+</html>

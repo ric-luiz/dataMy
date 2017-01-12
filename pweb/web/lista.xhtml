@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <h1>produtos</h1>
+    <body>
+        <h:form>
+            <h:dataTable var="prod" value="#{produtoMB.listaProdutos}" id="tabelaProdutos">
+                <f:facet name="header" ><h:outputLabel value="Produtos" /></f:facet>                
+                    <h:column>
+                        <f:facet name="header" ><h:outputLabel value="ID" /></f:facet>
+                        <h:outputLabel value="#{prod.id}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" ><h:outputLabel value="Descricao" /></f:facet>
+                        <h:outputLabel value="#{prod.descricao}" />
+                    </h:column>
+                    <h:column>    
+                        <f:facet name="header" ><h:outputLabel value="Data de Validade" /></f:facet>
+                        <h:outputLabel value="#{prod.dtValidade}" />
+                    </h:column>
+                    <h:column>    
+                        <f:facet name="header" ><h:outputLabel value="Preço" /></f:facet>
+                        <h:outputLabel value="#{prod.preco}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" ><h:outputLabel value="Excluir" /></f:facet>
+                        <h:commandButton action="#{produtoMB.excluir(prod)}" />                                          
+                    </h:column>
+            </h:dataTable>
+            <a href="alterar.xhtml">alterar</a>  
+        </h:form>                
+    </body>
+</html>

@@ -5,3 +5,4 @@ dist/
 nbdist/
 .nb-gradle/
 /target/
+/pweb/nbproject/private/

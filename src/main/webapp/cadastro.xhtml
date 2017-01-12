@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      >
+          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -13,29 +14,7 @@
     </head>
     <body>
 
-        <script>
-            function validar() {
-
-                var usuario = document.getElementById('cmpLogin').value;
-
-                var senha = document.getElementById('cmpSenha').value;
-
-                var senha2 = document.getElementById('cmpSenha2').value;
-
-                if (usuario == 0 || senha == 0 || senha2 == 0) {
-                    window.alert("Dados não informados.");
-
-                } else if (senha != senha2) {
-                    window.alert("A senha tem que ser idênticas.");
-                }
-
-            }
-
-        </script>
-
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
-        <!--Título do Datamy --> 
+        <!--TÃ­tulo do Datamy --> 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 col-sm-offset-4">
@@ -46,14 +25,19 @@
             </div>
         </div>
         <div id="blocoLogin" class="container">
-            <!--formulário do login -->            
+            <!--formulÃ¡rio do login -->            
             <h:form>
-                <!--col-sm-offset-6 deixa o conteúdo na outra div -->    
+                <!--col-sm-offset-6 deixa o conteÃºdo na outra div -->    
                 <div class="row">
                     <div class="col-md-4 col-sm-offset-4">
                         <div class="input-group" >
                             <label class="input-group input-group-addon"><b class="glyphicon glyphicon-user"></b></label>                            
-                            <h:inputText styleClass="form-control" id="cmpLogin" a:placeholder="Login" value="#{usuario.usuario.username}" />
+                            <h:inputText styleClass="form-control" id="cmpLogin" a:placeholder="Login" value="#{usuario.usuario.username}" 
+                                         
+                                         required="true" requiredMessage="*Campo obrigatório">
+                            
+                            </h:inputText>
+                            <h:message for="cmpLogin" style="color:red"/>
                         </div>
                     </div>
                 </div>
@@ -63,7 +47,13 @@
                     <div class="col-md-4 col-sm-offset-4">
                         <div class="input-group" >
                             <label class="input-group input-group-addon"><b class="glyphicon glyphicon-user"></b></label>                            
-                            <h:inputText styleClass="form-control" id="cpmEmail" a:placeholder="Email" value="#{usuario.usuario.email}" />
+                            <h:inputText styleClass="form-control" id="cpmEmail" a:placeholder="Email" value="#{usuario.usuario.email}" 
+                                         
+                                         required="true" requiredMessage="*Campo obrigatório" validatorMessage="*Email inválido">
+                                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+                           
+                            </h:inputText>
+                            <h:message for="cpmEmail" style="color:red"/>
                         </div>
                     </div>
                 </div>
@@ -73,13 +63,18 @@
                     <div class="col-md-4 col-sm-offset-4">
                         <div class="input-group" >
                             <label class="input-group input-group-addon"><b class="glyphicon glyphicon-user"></b></label>                            
-                            <h:inputText styleClass="form-control" id="cpmNome" a:placeholder="Nome Completo" value="#{usuario.usuario.nome}"/>
+                            <h:inputText styleClass="form-control" id="cpmNome" a:placeholder="Nome Completo" value="#{usuario.usuario.nome}"
+                                         
+                                        required="true" requiredMessage="*Campo obrigatório">
+                            
+                            </h:inputText>
+                            <h:message for="cpmNome" style="color:red"/>
                         </div>
                     </div>
                 </div>
 
 
-                <br/>
+<!--                <br/>
                 <div class="row">
                     <div class="col-md-4 col-sm-offset-4">
                         <div class="input-group" >
@@ -87,36 +82,46 @@
                             <h:inputText styleClass="form-control" id="cpmCpf" a:placeholder="Informe seu cpf" value="#{usuario.usuario.cpf}"/>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
-                <!--formulário da senha -->    
+                <!--formulÃ¡rio da senha -->    
                 <br/>
                 <div class="row">
                     <div class="col-md-4 col-sm-offset-4">
                         <div class="input-group">
                             <label class="input-group input-group-addon"><b class="glyphicon glyphicon-log-in"></b></label>                            
-                            <h:inputSecret styleClass="form-control" id="cmpSenha" a:placeholder="Senha" value="#{usuario.usuario.password}" />
+                            <h:inputSecret styleClass="form-control" id="cmpSenha" a:placeholder="Senha" value="#{usuario.usuario.password}" 
+                                           
+                                           required="true" requiredMessage="*Campo obrigatório">
+                            
+                            </h:inputSecret>
+                            <h:message for="cmpSenha" style="color:red"/>
                         </div>
                     </div>
                 </div>
 
-                <!--formulário da cofirmação da senha -->    
+                <!--formulÃ¡rio da cofirmaÃ§Ã£o da senha -->    
                 <br/>
                 <div class="row">
                     <div class="col-md-4 col-sm-offset-4">
                         <div class="input-group">
                             <label class="input-group input-group-addon"><b class="glyphicon glyphicon-log-in"></b></label>                            
-                            <h:inputSecret styleClass="form-control" id="cmpSenha2" a:placeholder="Confirme sua Senha" />
+                            <h:inputSecret styleClass="form-control" id="cmpSenha2" a:placeholder="Confirme sua Senha" 
+                                           
+                                           required="true" requiredMessage="*Campo obrigatório">
+                            
+                            </h:inputSecret>
+                            <h:message for="cmpSenha2" style="color:red"/>
                         </div>
                     </div>
                 </div> 
 
 
-                <!--botão de login -->
+                <!--botÃ£o de login -->
                 <br/>
                 <div class="row">
                     <div class="col-md-4 col-sm-offset-4 text-right">                        
-                        <h:commandButton styleClass="btn btn-default" onclick="validar()" id="btnLogin" value="Cadastrar" action="#{usuario.cadastrar()}" />
+                        <h:commandButton styleClass="btn btn-default" id="btnLogin" value="Cadastrar" action="#{usuario.cadastrar()}" />
                     </div>
                 </div>
             </h:form>            

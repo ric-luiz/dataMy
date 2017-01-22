@@ -8,13 +8,15 @@ import java.util.Date;
  */
 public class CompraRelatorio {
     private int id;
-    private double valorRelatorio;
-    private Date dataCompraRelatorio;
+    private double valorCompra;
+    private int numeroParcelas;
+    private int quantidade;
+    private Date dataCompraRelatorio;    
     private Usuario user;
 
     public CompraRelatorio(int id, double valorRelatorio, Date dataCompraRelatorio, Usuario user) {
         this.id = id;
-        this.valorRelatorio = valorRelatorio;
+        this.valorCompra = valorRelatorio;
         this.dataCompraRelatorio = dataCompraRelatorio;
         this.user = user;
     }
@@ -30,14 +32,14 @@ public class CompraRelatorio {
         this.id = id;
     }
 
-    public double getValorRelatorio() {
-        return valorRelatorio;
+    public double getValorCompra() {
+        return valorCompra;
     }
 
-    public void setValorRelatorio(double valorRelatorio) {
-        this.valorRelatorio = valorRelatorio;
+    public void setValorCompra(double valorCompra) {
+        this.valorCompra = valorCompra;
     }
-
+    
     public Date getDataCompraRelatorio() {
         return dataCompraRelatorio;
     }
@@ -52,6 +54,22 @@ public class CompraRelatorio {
 
     public void setUser(Usuario user) {
         this.user = user;
+    }
+
+    public int getNumeroParcelas() {
+        return numeroParcelas;
+    }
+
+    public void setNumeroParcelas(int numeroParcelas) {
+        this.numeroParcelas = numeroParcelas;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
         
 }

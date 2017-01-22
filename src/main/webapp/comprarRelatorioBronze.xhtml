@@ -14,8 +14,7 @@
             Nome Titular: <h:inputText value="#{cartaocredito.cartaoCredito.nomeTitular}"/> <br/>
             Numero Cartao: <h:inputText value="#{cartaocredito.cartaoCredito.numeroCartao}"/> <br/>
             Codigo Segurança: <h:inputText value="#{cartaocredito.cartaoCredito.codigoSeguranca}"/> <br/>
-            Qtd Crédito: <h:inputText value="#{compracredito.compraCredito.valorComprado}"/> <br/>
-            parcelas: <h:selectOneMenu value="#{compracredito.compraCredito.numeroParcelas}">
+            parcelas: <h:selectOneMenu value="#{comprarrelatorio.compraRelatorio.numeroParcelas}">
                         <f:selectItem itemValue="1" itemLabel="1" />
                         <f:selectItem itemValue="2" itemLabel="2" />
                         <f:selectItem itemValue="3" itemLabel="3" />
@@ -27,7 +26,7 @@
                         <f:selectItem itemValue="9" itemLabel="9" />
                         <f:selectItem itemValue="10" itemLabel="10" />
                       </h:selectOneMenu> <br/>              
-            <h:commandButton value="Comprar" action="#{compracredito.comprar()}">
+            <h:commandButton value="Comprar" action="#{comprarrelatorio.comprarBronze()}">
                 <f:actionListener binding="#{cartaocredito.inserirCartao()}" />
             </h:commandButton>
         </h:form>

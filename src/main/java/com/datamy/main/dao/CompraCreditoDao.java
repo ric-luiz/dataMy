@@ -46,10 +46,10 @@ public class CompraCreditoDao extends ConexaoDao{
                 valor = resultado.getInt("valorComprado");
             }                        
             
-            //Caso o usuario tenha credito suficiente para comprar aquele relatorio
-            if(valor >= compra.getValorRelatorio()){
-                possuiCredito = true;
-            }
+//            //Caso o usuario tenha credito suficiente para comprar aquele relatorio
+//            if(valor >= compra.getValorRelatorio()){
+//                possuiCredito = true;
+//            }
             
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);

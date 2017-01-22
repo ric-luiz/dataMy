@@ -1,7 +1,49 @@
+# Empty CSS file for your own CSS
+
 h4,h3{
     text-align: center;
 }
 p.text-primary{
      text-align: justify; 
     text-indent: 50px;  
+}
+
+.plano-bronze-background{
+    background-color: rgb(220,165,112); 
+    border: none;
+}
+
+.plano-bronze{
+    background-color: rgb(185,114,45) !important; 
+    color: white !important;
+}
+
+.plano-silver-background{
+    background-color: rgb(211,211,211);
+    border: none;
+}
+
+.plano-silver{
+     background-color: rgb(128,128,128);
+     color: white !important;
+}
+
+.plano-gold-background{
+    background-color: #FFE764;
+    border: none;
+}
+
+.plano-gold{
+    background-color: #C6A700;
+    color: white !important;
+}
+
+.plano-diamante-background{
+    background-color: #ADD0EE; 
+    border: none;
+}
+
+.plano-diamante{
+    background-color: #1266AB;
+    color: white !important;
 }

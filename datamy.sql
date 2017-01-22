@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Dez-2016 às 00:11
+-- Generation Time: 22-Jan-2017 às 02:19
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 5.5.38
 
@@ -27,50 +27,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cartaocredito` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `nomeTitular` varchar(255) NOT NULL,
-  `numero` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `chamado`
---
-
-CREATE TABLE `chamado` (
-  `id` int(11) NOT NULL,
-  `titulo` varchar(255) NOT NULL,
-  `dataInicio` date NOT NULL,
-  `dataFim` date DEFAULT NULL,
-  `status` varchar(45) NOT NULL DEFAULT 'Em aberto',
-  `descricao` varchar(255) NOT NULL,
-  `pathImagem` varchar(255) DEFAULT NULL,
-  `usuario_id` int(11) NOT NULL,
-  `relatorioChamado_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `compracredito`
---
-
-CREATE TABLE `compracredito` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `valorComprado` int(11) NOT NULL,
-  `dataCompra` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `numeroparcelas` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL
+  `numero` int(10) UNSIGNED NOT NULL,
+  `usuario_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `compracredito`
+-- Extraindo dados da tabela `cartaocredito`
 --
 
-INSERT INTO `compracredito` (`id`, `valorComprado`, `dataCompra`, `numeroparcelas`, `usuario_id`) VALUES
-(16, 1000, '2016-12-18 22:17:37', 1, 2);
+INSERT INTO `cartaocredito` (`id`, `nomeTitular`, `numero`, `usuario_id`) VALUES
+(1, 'luiz', 1653127323, 1);
 
 -- --------------------------------------------------------
 
@@ -79,11 +47,20 @@ INSERT INTO `compracredito` (`id`, `valorComprado`, `dataCompra`, `numeroparcela
 --
 
 CREATE TABLE `comprarelatorio` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `valorRelatorio` double NOT NULL,
-  `dataCompraRelatorio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `usuario_id` int(11) NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `dataCompraRelatorio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `valorCompra` double UNSIGNED NOT NULL,
+  `parcelas` int(10) UNSIGNED NOT NULL,
+  `quantidade` int(10) UNSIGNED NOT NULL,
+  `usuario_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `comprarelatorio`
+--
+
+INSERT INTO `comprarelatorio` (`id`, `dataCompraRelatorio`, `valorCompra`, `parcelas`, `quantidade`, `usuario_id`) VALUES
+(1, '2017-01-21 19:59:19', 200, 9, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -92,35 +69,9 @@ CREATE TABLE `comprarelatorio` (
 --
 
 CREATE TABLE `estatistica` (
-  `id` int(11) NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `caminhoArquivo` varchar(255) NOT NULL,
-  `compraRelatorio_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `relatoriochamados`
---
-
-CREATE TABLE `relatoriochamados` (
-  `id` int(11) NOT NULL,
-  `tipo` varchar(100) NOT NULL DEFAULT 'Diario',
-  `dataRelatorioChamado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `caminhoArquivo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `transacoes`
---
-
-CREATE TABLE `transacoes` (
-  `id` int(11) NOT NULL,
-  `dataTransacao` date NOT NULL,
-  `tipo` varchar(100) NOT NULL,
-  `caminhoArquivo` varchar(255) NOT NULL
+  `compraRelatorio_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -130,24 +81,22 @@ CREATE TABLE `transacoes` (
 --
 
 CREATE TABLE `usuario` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `cpf` varchar(15) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `perfil` varchar(45) NOT NULL DEFAULT 'padrao',
-  `status` varchar(45) NOT NULL DEFAULT 'confirmacao',
-  `username` varchar(80) NOT NULL,
-  `password` varchar(80) NOT NULL,
-  `transacoes_id` int(11) DEFAULT NULL,
-  `nomecompleto` varchar(80) NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `cpf` varchar(11) NOT NULL,
+  `nomecompleto` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `perfil` varchar(50) NOT NULL DEFAULT '''padrao''',
+  `status` varchar(50) NOT NULL DEFAULT '''confirmar''',
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `cpf`, `email`, `perfil`, `status`, `username`, `password`, `transacoes_id`, `nomecompleto`) VALUES
-(1, '117.237.364-73', 'pablosfictions@gmail.com', 'padrao', 'confirmacao', 'PabloAraujo', '123', NULL, 'hugo pablo'),
-(2, '01646998480', 'luiz@luiz', 'padrao', 'confirmacao', 'luiz', '123', NULL, 'luiz silva');
+INSERT INTO `usuario` (`id`, `cpf`, `nomecompleto`, `email`, `perfil`, `status`, `username`, `password`) VALUES
+(1, '01646998480', 'ricardo luiz da silva junior', 'junior@gmail.com', '''padrao''', '''confirmar''', 'luiz', '123');
 
 --
 -- Indexes for dumped tables
@@ -157,19 +106,22 @@ INSERT INTO `usuario` (`id`, `cpf`, `email`, `perfil`, `status`, `username`, `pa
 -- Indexes for table `cartaocredito`
 --
 ALTER TABLE `cartaocredito`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `compracredito`
---
-ALTER TABLE `compracredito`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Indexes for table `comprarelatorio`
 --
 ALTER TABLE `comprarelatorio`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indexes for table `estatistica`
+--
+ALTER TABLE `estatistica`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `compraRelatorio_id` (`compraRelatorio_id`);
 
 --
 -- Indexes for table `usuario`
@@ -185,22 +137,44 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `cartaocredito`
 --
 ALTER TABLE `cartaocredito`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `compracredito`
---
-ALTER TABLE `compracredito`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `comprarelatorio`
 --
 ALTER TABLE `comprarelatorio`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `estatistica`
+--
+ALTER TABLE `estatistica`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `cartaocredito`
+--
+ALTER TABLE `cartaocredito`
+  ADD CONSTRAINT `usuarioCartao_fk` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `comprarelatorio`
+--
+ALTER TABLE `comprarelatorio`
+  ADD CONSTRAINT `usuarioCompraRelatorio_fk` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `estatistica`
+--
+ALTER TABLE `estatistica`
+  ADD CONSTRAINT `estatisticaCompraRelatorio_fk` FOREIGN KEY (`compraRelatorio_id`) REFERENCES `comprarelatorio` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

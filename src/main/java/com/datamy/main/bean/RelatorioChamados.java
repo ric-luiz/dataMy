@@ -49,11 +49,12 @@ public class RelatorioChamados {
         this.dataRelatorio = dataRelatorio;
     }
 
-    public RelatorioChamados(int id, String tipo, String pathArquivo, Date dataRelatorio) {
+    public RelatorioChamados(int id, String tipo, Date dataRelatorio, String pathArquivo){
         this.id = id;
         this.tipo = tipo;
-        this.pathArquivo = pathArquivo;
         this.dataRelatorio = dataRelatorio;
+        this.pathArquivo = pathArquivo;
+        
     }
 
     public RelatorioChamados() {

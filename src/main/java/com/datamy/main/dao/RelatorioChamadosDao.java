@@ -6,7 +6,6 @@
 package com.datamy.main.dao;
 
 import com.datamy.main.bean.RelatorioChamados;
-import com.datamy.main.bean.Usuario;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;

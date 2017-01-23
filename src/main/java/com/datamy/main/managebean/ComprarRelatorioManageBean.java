@@ -57,22 +57,16 @@ public class ComprarRelatorioManageBean implements Serializable {
         this.compraRelatorio.setQuantidade(5);
         return comprarRelatorio();
     }
-//
-//    public String comprarBronze() {
-//        this.compraRelatorio.setValorRelatorio(400);
-//        this.qtdRelatorios = 10;
-//        return comprarRelatorio();
-//    }
-//
-//    public String comprarSilver() {
-//        this.compraRelatorio.setValorRelatorio(800);
-//        this.qtdRelatorios = 20;
-//        return comprarRelatorio();
-//    }
-//
-//    public String comprarGold() {
-//        this.compraRelatorio.setValorRelatorio(1000);
-//        this.qtdRelatorios = 35;
-//        return comprarRelatorio();
-//    }        
+
+    public String comprarSilver() {
+        this.compraRelatorio.setValorCompra(400);
+        this.compraRelatorio.setQuantidade(10);
+        return comprarRelatorio();
+    }
+
+    public String comprarGold() {
+        this.compraRelatorio.setValorCompra(800);
+        this.compraRelatorio.setQuantidade(15);
+        return comprarRelatorio();
+    }        
 }

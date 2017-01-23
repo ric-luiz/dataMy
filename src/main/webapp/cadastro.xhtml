@@ -78,7 +78,7 @@
                     <div class="col-md-4 col-sm-offset-4">
                         <div class="input-group" >
                             <label class="input-group input-group-addon"><b class="glyphicon glyphicon-user"></b></label>                            
-                            <h:inputText styleClass="form-control" id="cpmCpf" a:placeholder="Informe seu cpf" value="#{usuario.usuario.cpf}"/>
+                            <h:inputText styleClass="form-control" required="true" requiredMessage="*Campo obrigatório" id="cpmCpf" a:placeholder="Informe seu cpf" value="#{usuario.usuario.cpf}"/>
                         </div>
                     </div>
                 </div>
@@ -105,8 +105,7 @@
                     <div class="col-md-4 col-sm-offset-4">
                         <div class="input-group">
                             <label class="input-group input-group-addon"><b class="glyphicon glyphicon-log-in"></b></label>                            
-                            <h:inputSecret styleClass="form-control" id="cmpSenha2" a:placeholder="Confirme sua Senha" 
-                                           
+                            <h:inputSecret styleClass="form-control" id="cmpSenha2" a:placeholder="Confirme sua Senha"                                            
                                            required="true" requiredMessage="*Campo obrigatório">
                             
                             </h:inputSecret>

@@ -4,6 +4,7 @@ import com.datamy.main.bean.CompraRelatorio;
 import com.datamy.main.bean.Usuario;
 import com.datamy.main.dao.CompraRelatorioDao;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -22,6 +23,7 @@ public class ComprarRelatorioManageBean implements Serializable {
     private Usuario user;
     private CompraRelatorio compraRelatorio;
     private CompraRelatorioDao cDao;
+    private int QuantidadeCompras;
 
     public ComprarRelatorioManageBean() {
         this.user = new Usuario();
@@ -34,6 +36,13 @@ public class ComprarRelatorioManageBean implements Serializable {
         compraRelatorio.setUser(user);
         cDao.insert(compraRelatorio);
         return "home.xhtml";
+    }
+    
+    //Recupera a lista de compras realizadas pelo usuario
+    public ArrayList<CompraRelatorio> findComprasRelatorios(){
+        ArrayList<CompraRelatorio> compras = cDao.getComprasRelatorios(user);
+        this.QuantidadeCompras = compras.size();
+        return compras;
     }
 
     public Usuario getUser() {
@@ -52,6 +61,10 @@ public class ComprarRelatorioManageBean implements Serializable {
         this.compraRelatorio = compraRelatorio;
     }
 
+    public int getQuantidadeCompras() {
+        return QuantidadeCompras;
+    }
+    
     public String comprarBronze() {
         this.compraRelatorio.setValorCompra(200);
         this.compraRelatorio.setQuantidade(5);

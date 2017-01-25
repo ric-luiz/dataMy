@@ -13,17 +13,32 @@ public class CompraRelatorio {
     private int quantidade;
     private Date dataCompraRelatorio;    
     private Usuario user;
+    private String tipo;
 
-    public CompraRelatorio(int id, double valorRelatorio, Date dataCompraRelatorio, Usuario user) {
+    public CompraRelatorio(int id, double valorCompra, int numeroParcelas, int quantidade, Date dataCompraRelatorio, Usuario user) {
         this.id = id;
-        this.valorCompra = valorRelatorio;
+        this.valorCompra = valorCompra;
+        this.numeroParcelas = numeroParcelas;
+        this.quantidade = quantidade;
         this.dataCompraRelatorio = dataCompraRelatorio;
         this.user = user;
+        tipoCompra();
     }
-
+            
     public CompraRelatorio() {
     }
-
+    
+    //Diz que tipo de relatorio foi comprado. Informação n pertence ao banco de dados
+    private void tipoCompra(){
+        if(this.valorCompra == 200.00){
+            tipo = "Bronze";
+        } else if(this.valorCompra == 400.00){
+            tipo = "Silver";
+        } else if(this.valorCompra == 800.00){
+            tipo = "Gold";
+        }
+    }
+    
     public int getId() {
         return id;
     }
@@ -70,6 +85,14 @@ public class CompraRelatorio {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
         
 }

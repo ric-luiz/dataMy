@@ -46,5 +46,9 @@ public class Estatistica {
 
     public Estatistica() {
     }
+
+    public Estatistica(int id) {
+        this.id = id;
+    }
         
 }

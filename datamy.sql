@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Jan-2017 às 02:19
+-- Generation Time: 27-Jan-2017 às 03:05
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 5.5.38
 
@@ -36,15 +36,58 @@ CREATE TABLE `cartaocredito` (
 --
 -- Extraindo dados da tabela `cartaocredito`
 --
+-------------------------------------------------------
 
-INSERT INTO `cartaocredito` (`id`, `nomeTitular`, `numero`, `usuario_id`) VALUES
-(1, 'luiz', 1653127323, 1);
+--
+-- Estrutura da tabela `chamado`
+--
+
+CREATE TABLE `chamado` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `dataInicio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `tipo` varchar(255) NOT NULL,
+  `dataFim` datetime DEFAULT NULL,
+  `status` varchar(45) NOT NULL DEFAULT 'Em aberto',
+  `descricao` varchar(255) NOT NULL,
+  `pathImagem` varchar(255) DEFAULT NULL,
+  `usuario_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `chamado`
+--
+
+--
+-- Estrutura da tabela `facebook`
+--
+
+CREATE TABLE `facebook` (
+  `idDadosFacebook` int(11) NOT NULL,
+  `gostei` int(11) NOT NULL,
+  `amei` int(11) NOT NULL,
+  `haha` int(11) NOT NULL,
+  `triste` int(11) NOT NULL,
+  `raiva` int(11) NOT NULL,
+  `comentarios` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `comprarelatorio`
+-- Estrutura da tabela `twitter`
 --
+
+CREATE TABLE `twitter` (
+  `idDadosTwitter` int(11) NOT NULL,
+  `curtidas` int(11) NOT NULL,
+  `retweets` int(11) NOT NULL,
+  `falandoSobre` int(11) NOT NULL,
+  `replys` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
 
 CREATE TABLE `comprarelatorio` (
   `id` int(10) UNSIGNED NOT NULL,
@@ -59,22 +102,15 @@ CREATE TABLE `comprarelatorio` (
 -- Extraindo dados da tabela `comprarelatorio`
 --
 
-INSERT INTO `comprarelatorio` (`id`, `dataCompraRelatorio`, `valorCompra`, `parcelas`, `quantidade`, `usuario_id`) VALUES
-(1, '2017-01-21 19:59:19', 200, 9, 5, 1);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `estatistica`
---
-
 CREATE TABLE `estatistica` (
   `id` int(10) UNSIGNED NOT NULL,
   `caminhoArquivo` varchar(255) NOT NULL,
   `compraRelatorio_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
+--
+-- Extraindo dados da tabela `estatistica`
+--
 
 --
 -- Estrutura da tabela `usuario`
@@ -95,17 +131,18 @@ CREATE TABLE `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `cpf`, `nomecompleto`, `email`, `perfil`, `status`, `username`, `password`) VALUES
-(1, '01646998480', 'ricardo luiz da silva junior', 'junior@gmail.com', '''padrao''', '''confirmar''', 'luiz', '123');
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `cartaocredito`
 --
 ALTER TABLE `cartaocredito`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_id` (`usuario_id`);
+
+--
+-- Indexes for table `chamado`
+--
+ALTER TABLE `chamado`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_id` (`usuario_id`);
 
@@ -137,17 +174,22 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `cartaocredito`
 --
 ALTER TABLE `cartaocredito`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `chamado`
+--
+ALTER TABLE `chamado`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `comprarelatorio`
 --
 ALTER TABLE `comprarelatorio`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `estatistica`
 --
 ALTER TABLE `estatistica`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
@@ -162,6 +204,12 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `cartaocredito`
   ADD CONSTRAINT `usuarioCartao_fk` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `chamado`
+--
+ALTER TABLE `chamado`
+  ADD CONSTRAINT `chamadoUsuario_fk` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `comprarelatorio`

@@ -6,290 +6,125 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html 
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html" >
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html" 
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<head>
+    <head>
 
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content=""/>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content=""/>
 
-    <title>DataMy</title>
+        <title>DataMy</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+        <!-- Bootstrap Core CSS -->
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
 
-    <!-- Custom CSS -->
-    <link href="resources/css/sb-admin.css" rel="stylesheet"/>
+        <!-- Custom CSS -->
+        <link href="resources/css/sb-admin.css" rel="stylesheet"/>
 
-    <!-- Custom Fonts -->
-    <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Custom Fonts -->
+        <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <div id="wrapper">
+        <div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="relatorio.html">DataMy Administrativo</a>
-            </div>
-            <!-- Topo Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="" />
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Nome do usuário</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Quarta-Feira às 19:32 PM</p>
-                                        <p>Mensagem...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="" />
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Nome do usuário</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Quarta-Feira às 19:32 PM</p>
-                                        <p>Mensagem...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="" />
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Nome do usuário</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Quarta-Feira às 19:32 PM</p>
-                                        <p>Mensagem...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Ler todas as mensagens</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Nome do alerta <span class="label label-default">Tipo de alerta</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Nome do alerta <span class="label label-primary">Tipo de alerta</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Nome do alerta <span class="label label-success">Tipo de alerta</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Nome do alerta <span class="label label-info">Tipo de alerta</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Nome do alerta <span class="label label-warning">Tipo de alerta</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Nome do alerta <span class="label label-danger">Tipo de alerta</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">Ver todos</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <h:outputText value=" #{usuario.usuario.nome}" /><b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Mensagem</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Configuração</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="index.html"><i class="fa fa-fw fa-power-off"></i> Sair</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-             <!-- Menu lateral -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-dashboard"></i> Relatório Completo <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Relatórios ......</a>
-                            </li>
-                            <li>
-                                <a href="#">Relatórios ......</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="painel.html"><i class="glyphicon glyphicon-usd"></i> Painel de transações</a>
-                    </li>
-                    <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Gráficos</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tabelas</a>
-                    </li>
-                    <li>
-                        <a href="abrirchamado.html"><i class="fa fa-fw fa-edit"></i> Abrir chamado</a>
-                    </li>
+            <!-- Navigation -->
 
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
+            <div id="page-wrapper">
 
-        <div id="page-wrapper">
+                <div class="container-fluid">
 
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Suporte
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="relatorio.html">Relatório Completo</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-edit"></i> Suporte
-                            </li>
-                        </ol>
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                Suporte
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li>
+                                    <i class="fa fa-dashboard"></i>  <a href="home.xhtml">Home</a>
+                                </li>
+                                <li class="active">
+                                    <i class="fa fa-edit"></i> Suporte
+                                </li>
+                            </ol>
+                        </div>
                     </div>
-                </div>
-                <!-- /.row -->
+                    <!-- /.row -->
 
-                <div class="row">
-                    <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
 
-                        <form role="form">
-
-                            <div class="form-group">
-                                <label>Dados do usuário</label>
-                                <br/>
-                                <label>Nome:</label>
-                                <input class="form-control" />
-                                <p class="help-block">Nome e sobrenome.</p>
-                            </div>
-                            <div class="form-group">
-                                <label>CPF/CNPJ</label>
-                                <input class="form-control"/>
-                                <p class="help-block">obrigatório.</p>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label>Documentação</label>
-                                <input type="file"/>
-                                <p class="help-block">caso seja necessário.</p>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Você é</label>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked"/>Proprietário
-                                    </label>
+                            <h:form enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Dados do usuário</label>
+                                    <br/>
+                                    <label>Nome:</label>                                
+                                    <h:inputText class="form-control" value="#{chamado.chamado.titulo}"/>
+                                    <p class="help-block">Titulo</p>
                                 </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"/>Funcionário
-                                    </label>
+
+                                <div class="form-group">
+                                    <label>Documentação</label>                                
+                                    <h:inputFile />
+                                    <p class="help-block">caso seja necessário.</p>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label>Tipo de problema</label>
-                                <select class="form-control">
-                                    <option>Pagamento</option>
-                                    <option>Gerar gráficos</option>
-                                    <option>Impressão de relatórios</option>
-                                    <option>Atualização de dados</option>
-                                    <option>Conta</option>
-                                    <option>Outro</option>
-                                </select>
-                            </div>
-                            
-                            
-                            <div class="form-group">
-                                <label>Mensagem</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
+                                <div class="form-group">
+                                    <label>Tipo de problema</label>
+                                    <h:selectOneMenu class="form-control" value="#{chamado.chamado.tipo}">
+                                        <f:selectItem itemValue="Pagamento" itemLabel="Pagamento" />
+                                        <f:selectItem itemValue="Gerar gráficos" itemLabel="Gerar gráficos" />	   							
+                                        <f:selectItem itemValue="Impressão de relatórios" itemLabel="Impressão de relatórios" />	   							
+                                        <f:selectItem itemValue="Atualização de dados" itemLabel="Atualização de dados" />	   							
+                                        <f:selectItem itemValue="Conta" itemLabel="Conta" />	   							
+                                        <f:selectItem itemValue="Outro" itemLabel="Outro" />	   							
+                                    </h:selectOneMenu>
+                                </div>
 
-                            <button type="submit" class="btn btn-default">Enviar</button>
 
-                        </form>
+                                <div class="form-group">
+                                    <label>Mensagem</label>
+                                    <h:inputTextarea class="form-control" rows="3" value="#{chamado.chamado.descricao}"/>                                    
+                                </div>
+                                
+                                <h:commandButton class="btn btn-default" value="Enviar" action="#{chamado.criarChamado()}"/>
+                            </h:form>
+                        </div>
 
                     </div>
-                    
+                    <!-- /.row -->
+
                 </div>
-                <!-- /.row -->
+                <!-- /.container-fluid -->
 
             </div>
-            <!-- /.container-fluid -->
+            <!-- /#page-wrapper -->
 
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-</body>
+    </body>
 
 </html>
 

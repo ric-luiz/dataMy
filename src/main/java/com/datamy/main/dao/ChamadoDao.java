@@ -20,13 +20,11 @@ import java.util.logging.Logger;
  */
 public class ChamadoDao extends ConexaoDao{
     private UsuarioDao uDao;
-    private RelatorioChamadosDao rcDao;
     ArrayList<Chamado> chamados;                
     
     public ChamadoDao() {       
         super();
         this.uDao = new UsuarioDao();
-        this.rcDao = new RelatorioChamadosDao();
     }            
     
     /**
@@ -46,8 +44,8 @@ public class ChamadoDao extends ConexaoDao{
             resultado = preparacao.executeQuery();                        
             
             while(resultado.next()){                
-                chamados.add(new Chamado(resultado.getInt("id"), resultado.getString("titulo"), resultado.getDate("dataInicio"), 
-                        resultado.getDate("dataFim"), resultado.getString("status"), resultado.getString("descricao"), resultado.getString("pathImagem"), uDao.select(resultado.getInt("usuario_id")), rcDao.select(resultado.getInt("relatorioChamado_id"))));
+                chamados.add(new Chamado(resultado.getInt("id"), resultado.getString("titulo"),resultado.getString("tipo") ,resultado.getDate("dataInicio"), 
+                        resultado.getDate("dataFim"), resultado.getString("status"), resultado.getString("descricao"), resultado.getString("pathImagem"), uDao.select(resultado.getInt("usuario_id"))));
             }
             
         } catch (SQLException ex) {
@@ -71,8 +69,8 @@ public class ChamadoDao extends ConexaoDao{
             resultado = consulta.executeQuery("SELECT * FROM chamado");
             
             while(resultado.next()){                                
-                chamados.add(new Chamado(resultado.getInt("id"), resultado.getString("titulo"), resultado.getDate("dataInicio"), 
-                        resultado.getDate("dataFim"), resultado.getString("status"), resultado.getString("descricao"), resultado.getString("pathImagem"), uDao.select(resultado.getInt("usuario_id")), rcDao.select(resultado.getInt("relatorioChamado_id"))));
+                chamados.add(new Chamado(resultado.getInt("id"), resultado.getString("titulo"),resultado.getString("tipo"), resultado.getDate("dataInicio"), 
+                        resultado.getDate("dataFim"), resultado.getString("status"), resultado.getString("descricao"), resultado.getString("pathImagem"), uDao.select(resultado.getInt("usuario_id"))));
             }
             
         } catch (SQLException ex) {
@@ -90,19 +88,15 @@ public class ChamadoDao extends ConexaoDao{
      * @param usr
      * @param rc
      */
-    public void inserirChamado(Chamado call, Usuario usr, RelatorioChamados rc){
+    public void inserirChamado(Chamado call, Usuario usr){
         CriarConexao();
         try {
-            preparacao = conexao.prepareStatement("INSERT INTO `chamado`(`id`,`titulo`, `datainicio`, `dataFim`, `status`, `descricao`, `pathImagem`, `usuario_id`, `relatorioChamado_id`) VALUES (?,?,?,?,?,?,?,?,?)");
-            preparacao.setInt(1, call.getId());            
-            preparacao.setString(2, call.getTitulo());
-            preparacao.setDate(3, (Date) call.getDataInicio());
-            preparacao.setDate(4, (Date) call.getDataFim());
-            preparacao.setString(5, call.getStatus());
-            preparacao.setString(6, call.getDescricao());
-            preparacao.setString(7, call.getPathImagem());
-            preparacao.setInt(8, usr.getId());
-            preparacao.setInt(9, rc.getId());            
+            
+            preparacao = conexao.prepareStatement("INSERT INTO `chamado`(`titulo`, `tipo`, `descricao`, `usuario_id`) VALUES (?,?,?,?)");         
+            preparacao.setString(1, call.getTitulo());
+            preparacao.setString(2, call.getTipo());
+            preparacao.setString(3, call.getDescricao());
+            preparacao.setInt(4, usr.getId());          
             
             preparacao.executeUpdate();            
         } catch (SQLException ex) {

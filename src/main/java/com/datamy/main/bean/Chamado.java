@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.datamy.main.bean;
 
 import java.util.Date;
@@ -14,13 +9,13 @@ import java.util.Date;
 public class Chamado {
     private int id;
     private String titulo;
+    private String tipo;
     private Date dataInicio;
     private Date dataFim;
     private String status;
     private String descricao;
     private String pathImagem;
     private Usuario idUsuario;
-    private RelatorioChamados idRelatorioChamados;
 
     public int getId() {
         return id;
@@ -86,24 +81,24 @@ public class Chamado {
         this.idUsuario = idUsuario;
     }
 
-    public RelatorioChamados getIdRelatorioChamados() {
-        return idRelatorioChamados;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setIdRelatorioChamados(RelatorioChamados idRelatorioChamados) {
-        this.idRelatorioChamados = idRelatorioChamados;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
-
-    public Chamado(int id, String titulo, Date dataInicio, Date dataFim, String status, String descricao, String pathImagem, Usuario idUsuario, RelatorioChamados idRelatorioChamados) {
+    
+    public Chamado(int id, String titulo, String tipo,Date dataInicio,Date dataFim, String status, String descricao, String pathImagem, Usuario idUsuario) {
         this.id = id;
         this.titulo = titulo;
+        this.tipo = tipo;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.status = status;
         this.descricao = descricao;
         this.pathImagem = pathImagem;
         this.idUsuario = idUsuario;
-        this.idRelatorioChamados = idRelatorioChamados;
     }
 
     public Chamado() {

@@ -13,6 +13,8 @@ public class Estatistica {
     private int id;
     private String caminhoArquivo;
     private CompraRelatorio idCompraRelatorio;
+    private Twitter idDadosTwitter;
+    private Facebook idDadosFacebook;
 
     public int getId() {
         return id;
@@ -38,11 +40,31 @@ public class Estatistica {
         this.idCompraRelatorio = idCompraRelatorio;
     }
 
-    public Estatistica(int id, String caminhoArquivo, CompraRelatorio idCompraRelatorio) {
+    public Twitter getIdDadosTwitter() {
+        return idDadosTwitter;
+    }
+
+    public void setIdDadosTwitter(Twitter idDadosTwitter) {
+        this.idDadosTwitter = idDadosTwitter;
+    }
+
+    public Facebook getIdDadosFacebook() {
+        return idDadosFacebook;
+    }
+
+    public void setIdDadosFacebook(Facebook idDadosFacebook) {
+        this.idDadosFacebook = idDadosFacebook;
+    }
+        
+
+    public Estatistica(int id, String caminhoArquivo, CompraRelatorio idCompraRelatorio, Twitter idDadosTwitter, Facebook idDadosFacebook) {
         this.id = id;
         this.caminhoArquivo = caminhoArquivo;
         this.idCompraRelatorio = idCompraRelatorio;
+        this.idDadosTwitter = idDadosTwitter;
+        this.idDadosFacebook = idDadosFacebook;
     }
+    
 
     public Estatistica() {
     }

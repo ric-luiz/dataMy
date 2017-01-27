@@ -212,7 +212,7 @@ width: 11px;
 }
 
 .search-form > #search-sub {
-  background: url("../img/icons/search.png") no-repeat scroll 0 0 transparent;
+  background: url("../imagens/icons/search.png") no-repeat scroll 0 0 transparent;
   border: 0 ;
   bottom: 11px;
   height: 15px;
@@ -465,7 +465,7 @@ width: 11px;
 }
 
 .plus {
-  background: url("../img/icons/plus.png") no-repeat scroll center center #0faed9;
+  background: url("../imagens/icons/plus.png") no-repeat scroll center center #0faed9;
   border-radius: 50%;
   display: block;
   height: 80px;

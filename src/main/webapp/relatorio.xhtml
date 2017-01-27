@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
-
-    <head>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -31,9 +31,9 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-    </head>
+    </h:head>
 
-    <body>
+    <h:body>
 
         <div id="wrapper">
 
@@ -150,38 +150,9 @@
                         </ul>
                     </li>
                 </ul>
-                <!-- Menu lateral -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-dashboard"></i> Relatório Completo <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo" class="collapse">
-                                <li>
-                                    <a href="#">Relatórios ......</a>
-                                </li>
-                                <li>
-                                    <a href="#">Relatórios ......</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="painel.html"><i class="glyphicon glyphicon-usd"></i> Painel de transações</a>
-                        </li>
-                        <li>
-                            <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Gráficos</a>
-                        </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tabelas</a>
-                        </li>
-                        <li>
-                            <a href="abrirchamado.xhtml"><i class="fa fa-fw fa-edit"></i> Abrir chamado</a>
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
+                
             </nav>
-
+<div><p:chart type="pie" model="#{pizza.pieModel1}" style="width:400px;height:300px" /></div>
             <div id="page-wrapper">
 
                 <div class="container-fluid">
@@ -231,7 +202,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -377,6 +348,6 @@
         <script src="resources/js/plugins/morris/morris.min.js"></script>
         <script src="resources/js/plugins/morris/morris-data.js"></script>
 
-    </body>
+    </h:body>
 
 </html>

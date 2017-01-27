@@ -14,6 +14,7 @@ public class Facebook {
     private int gostei;
     private int amei;
     private int haha;
+    private int uou;
     private int triste;
     private int raiva;
     private String comentarios;
@@ -53,6 +54,14 @@ public class Facebook {
         this.haha = haha;
     }
 
+    public int getUou() {
+        return uou;
+    }
+
+    public void setUou(int uou) {
+        this.uou = uou;
+    }
+    
     public int getTriste() {
         return triste;
     }
@@ -77,11 +86,12 @@ public class Facebook {
         this.comentarios = comentarios;
     }
 
-    public Facebook(int id, int gostei, int amei, int haha, int triste, int raiva, String comentarios) {
+    public Facebook(int id, int gostei, int amei, int haha, int uou, int triste, int raiva, String comentarios) {
         this.id = id;
         this.gostei = gostei;
         this.amei = amei;
         this.haha = haha;
+        this.uou = uou;
         this.triste = triste;
         this.raiva = raiva;
         this.comentarios = comentarios;

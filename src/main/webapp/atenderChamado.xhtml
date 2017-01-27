@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <title>DataMy</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+
+                <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="resources/css/main.css"/>
+
+        <!-- Custom CSS -->
+        <link href="resources/css/sb-admin.css" rel="stylesheet"/>
+
+
+        <!-- Custom Fonts -->
+        <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+
+            <!--
+            Barra superior
+            ========================== -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="atenderChamado.xhtml">DataMy Administrativo - Suporte</a>
+                </div>
+                <!-- Topo Menu Items -->
+                <ul class="nav navbar-right top-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Pablo Pekos <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-envelope"></i> Mensagem</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-gear"></i> Configuração</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="index.html"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!--
+            End Barra superior
+            ========================== -->
+
+            <!--
+            Barra lateral
+            ========================== -->    
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav side-nav">
+                        
+                        <li>
+                            <a href="atenderChamado.html"><i class="glyphicon glyphicon-phone-alt"></i> Atender Chamados</a>
+                        </li>
+                        <li>
+                            <a href="relatorioChamados.html"><i class="glyphicon glyphicon-list-alt"></i> Relatórios de Chamados</a>
+                        </li>
+                    </ul>
+                    <!--
+                    End menus
+                    ========================== -->
+                </div>
+
+            </nav>
+
+            <!--
+            Migalhas de pão e títulos e subtitulos
+            ========================== -->
+            <div id="page-wrapper">
+
+                <div class="container-fluid">
+
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <div class="col-lg-12">
+                            <h1 class="page-header"> <img src="resources/imagens/datamy.png"/>
+                                Relatório Completo <small>Visão geral</small>
+                            </h1>
+                        </div>
+                    </div>
+                    <!--
+                    End Migalhas de pão e títulos e subtitulos
+                    ========================== -->
+
+                    <!--
+                    Painel
+                    ========================== -->
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="glyphicon glyphicon-phone-alt"></i> Atendimento de Chamados</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ordem #</th>
+                                                    <th>Tipo</th>
+                                                    <th>Situação</th>
+                                                    <th>Título</th>
+                                                    <th>Autor</th>
+                                                    <th>Atribuído para</th>
+                                                    <th>Duração</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>0007</td>
+                                                    <td>Análise</td>
+                                                    <td>Nova</td>
+                                                    <td>Relatório de chamadas</td>
+                                                    <td>Ricardo Luiz da Silva Junior</td>
+                                                    <td>Pablo Pekos Costa Orrico</td>
+                                                    <td>00:00:00</td>
+                                                    <td><a class="btn btn-success btn-sm btn-block" href="#" type="button">Atender</a></td>
+                                                    <td><a href="#"><i class="glyphicon glyphicon-share-alt"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>0006</td>
+                                                    <td>Análise</td>
+                                                    <td>Em andamento</td>
+                                                    <td>Gerar Relatório</td>
+                                                    <td>Ricardo Luiz da Silva Junior</td>
+                                                    <td>Pablo Pekos Costa Orrico</td>
+                                                    <td>00:35:18</td>
+                                                    <td><a class="btn btn-danger btn-sm btn-block" href="#" type="button">Finalizar</a></td>
+                                                    <td><a href="#"><i class="glyphicon glyphicon-share-alt"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>0005</td>
+                                                    <td>Análise</td>
+                                                    <td>Em andamento</td>
+                                                    <td>Usuário - CRUD</td>
+                                                    <td>Ricardo Luiz da Silva Junior</td>
+                                                    <td>Pablo Pekos Costa Orrico</td>
+                                                    <td>00:20:01</td>
+                                                    <td><a class="btn btn-danger btn-sm btn-block" href="#" type="button">Finalizar</a></td>
+                                                    <td><a href="#"><i class="glyphicon glyphicon-share-alt"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>0004</td>
+                                                    <td>Análise</td>
+                                                    <td>Nova</td>
+                                                    <td>Atender Chamados</td>
+                                                    <td>Ricardo Luiz da Silva Junior</td>
+                                                    <td>Pablo Pekos Costa Orrico</td>
+                                                    <td>00:00:00</td>
+                                                    <td><a class="btn btn-success btn-sm btn-block" href="#" type="button">Atender</a></td>
+                                                    <td><a href="#"><i class="glyphicon glyphicon-share-alt"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>0003</td>
+                                                    <td>Análise</td>
+                                                    <td>Feedback</td>
+                                                    <td>Abrir Chamado</td>
+                                                    <td>Ricardo Luiz da Silva Junior</td>
+                                                    <td>Pablo Pekos Costa Orrico</td>
+                                                    <td>00:00:00</td>
+                                                    <td><a class="btn btn-success btn-sm btn-block" href="#" type="button">Atender</a></td>
+                                                    <td><a href="#"><i class="glyphicon glyphicon-share-alt"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>0002</td>
+                                                    <td>Análise</td>
+                                                    <td>Em andamento</td>
+                                                    <td>Gerar Relatório</td>
+                                                    <td>Ricardo Luiz da Silva Junior</td>
+                                                    <td>Pablo Pekos Costa Orrico</td>
+                                                    <td>00:40:33</td>
+                                                    <td><a class="btn btn-danger btn-sm btn-block" href="#" type="button">Finalizar</a></td>
+                                                    <td><a href="#"><i class="glyphicon glyphicon-share-alt"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>0001</td>
+                                                    <td>Análise</td>
+                                                    <td>Em andamento</td>
+                                                    <td>Pagamento</td>
+                                                    <td>Ricardo Luiz da Silva Junior</td>
+                                                    <td>Pablo Pekos Costa Orrico</td>
+                                                    <td>01:03:16</td>
+                                                    <td><a class="btn btn-danger btn-sm btn-block" href="#" type="button">Finalizar</a></td>
+                                                    <td><a href="#"><i class="glyphicon glyphicon-share-alt"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    End Painel
+                    ========================== -->
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="resources/js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="resources/js/bootstrap.min.js"></script>
+
+    </body>
+</html>

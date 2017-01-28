@@ -6,7 +6,6 @@
 package com.datamy.main.dao;
 
 import com.datamy.main.bean.Chamado;
-import com.datamy.main.bean.RelatorioChamados;
 import com.datamy.main.bean.Usuario;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -66,7 +65,7 @@ public class ChamadoDao extends ConexaoDao{
         CriarConexao();
         
         try {
-            resultado = consulta.executeQuery("SELECT * FROM chamado");
+            resultado = consulta.executeQuery("SELECT * FROM chamado WHERE status NOT LIKE 'Finalizado'");
             
             while(resultado.next()){                                
                 chamados.add(new Chamado(resultado.getInt("id"), resultado.getString("titulo"),resultado.getString("tipo"), resultado.getDate("dataInicio"), 
@@ -83,10 +82,60 @@ public class ChamadoDao extends ConexaoDao{
     }
     
     /**
+     * Atualiza um chamado no banco Sem data Final
+     * @param chamado
+     */
+    public void updateChamado(Chamado chamado){
+        CriarConexao();
+        try {
+            String sql = "UPDATE `chamado` SET `titulo`=?,`dataInicio`=?,`tipo`=?,`status`=?,`descricao`=? WHERE `id`=?";
+        
+            preparacao = conexao.prepareStatement(sql);
+            preparacao.setString(1, chamado.getTitulo());
+            preparacao.setDate(2, new Date(chamado.getDataInicio().getTime()));
+            preparacao.setString(3, chamado.getTipo());
+            preparacao.setString(4, chamado.getStatus());
+            preparacao.setString(5, chamado.getDescricao());
+            preparacao.setInt(6, chamado.getId());
+            
+            preparacao.executeUpdate();            
+        } catch (SQLException ex) {
+            Logger.getLogger(ChamadoDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            fecharConexao();
+        }
+    }
+    
+    /**
+     * Atualiza um chamado no banco com a data Final
+     * @param chamado
+     */
+    public void UpdateChamadoDataFim(Chamado chamado){
+        CriarConexao();
+        try {
+            String sql = "UPDATE `chamado` SET `titulo`=?,`dataInicio`=?,`tipo`=?,`dataFim`=?,`status`=?,`descricao`=? WHERE `id`=?";
+        
+            preparacao = conexao.prepareStatement(sql);
+            preparacao.setString(1, chamado.getTitulo());
+            preparacao.setDate(2, new Date(chamado.getDataInicio().getTime()));
+            preparacao.setString(3, chamado.getTipo());
+            preparacao.setDate(4, new Date(chamado.getDataFim().getTime()));
+            preparacao.setString(5, chamado.getStatus());
+            preparacao.setString(6, chamado.getDescricao());
+            preparacao.setInt(7, chamado.getId());
+            
+            preparacao.executeUpdate();            
+        } catch (SQLException ex) {
+            Logger.getLogger(ChamadoDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            fecharConexao();
+        }
+    }
+    
+    /**
      * Inserir um chamado no banco
      * @param call
      * @param usr
-     * @param rc
      */
     public void inserirChamado(Chamado call, Usuario usr){
         CriarConexao();

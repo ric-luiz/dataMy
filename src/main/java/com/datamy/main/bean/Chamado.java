@@ -15,7 +15,7 @@ public class Chamado {
     private String status;
     private String descricao;
     private String pathImagem;
-    private Usuario idUsuario;
+    private Usuario user;
 
     public int getId() {
         return id;
@@ -73,12 +73,12 @@ public class Chamado {
         this.pathImagem = pathImagem;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
+    public Usuario getUser() {
+        return user;
     }
 
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 
     public String getTipo() {
@@ -89,7 +89,7 @@ public class Chamado {
         this.tipo = tipo;
     }
     
-    public Chamado(int id, String titulo, String tipo,Date dataInicio,Date dataFim, String status, String descricao, String pathImagem, Usuario idUsuario) {
+    public Chamado(int id, String titulo, String tipo,Date dataInicio,Date dataFim, String status, String descricao, String pathImagem, Usuario user) {
         this.id = id;
         this.titulo = titulo;
         this.tipo = tipo;
@@ -98,7 +98,7 @@ public class Chamado {
         this.status = status;
         this.descricao = descricao;
         this.pathImagem = pathImagem;
-        this.idUsuario = idUsuario;
+        this.user = user;
     }
 
     public Chamado() {

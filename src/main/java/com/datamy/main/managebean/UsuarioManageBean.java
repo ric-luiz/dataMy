@@ -27,10 +27,10 @@ public class UsuarioManageBean implements Serializable{
     }    
         
     //Logar no sistema
-    public String logar(){
+    public String logar(){        
         this.usuario = uDao.select(this.usuario); // jogar o usuario na varivel de sessão
         if(this.usuario != null){ //verifica se houve algum retorno da pesquisa no banco
-            return "home.xhtml";
+            return verificarTipoUsuario(usuario);
         } else if(this.usuario == null){
 	    FacesMessage message = new FacesMessage("Login inválido");    
 	    message.setSeverity(FacesMessage.SEVERITY_ERROR);    
@@ -40,7 +40,16 @@ public class UsuarioManageBean implements Serializable{
 	    message.setSeverity(FacesMessage.SEVERITY_ERROR);    
 	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Senha inválida", null));
 	}
+        this.usuario = new Usuario();
 	return "login.xhtml";
+    }
+    
+    private String verificarTipoUsuario(Usuario user){
+        if(user.getPerfil().equals("padrao")){
+            return "home.xhtml?faces-redirect=true";
+        } else {
+            return "atenderChamado.xhtml?faces-redirect=true";
+        }
     }
     
     //Cadastrar um Novo usuário

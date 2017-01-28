@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Jan-2017 às 03:05
+-- Generation Time: 28-Jan-2017 às 20:06
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 5.5.38
 
@@ -62,13 +62,6 @@ CREATE TABLE `chamado` (
   `usuario_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `chamado`
---
-
-INSERT INTO `chamado` (`id`, `titulo`, `dataInicio`, `tipo`, `dataFim`, `status`, `descricao`, `pathImagem`, `usuario_id`) VALUES
-(1, 'teste suporte', '2017-01-26 23:21:22', 'Pagamento', NULL, 'Em aberto', 'teste de suporte', NULL, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -123,8 +116,8 @@ CREATE TABLE `usuario` (
   `cpf` varchar(11) NOT NULL,
   `nomecompleto` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `perfil` varchar(50) NOT NULL DEFAULT '''padrao''',
-  `status` varchar(50) NOT NULL DEFAULT '''confirmar''',
+  `perfil` varchar(50) NOT NULL DEFAULT 'padrao',
+  `status` varchar(50) NOT NULL DEFAULT 'confirmar',
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -134,7 +127,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `cpf`, `nomecompleto`, `email`, `perfil`, `status`, `username`, `password`) VALUES
-(1, '01646998480', 'ricardo luiz da silva junior', 'junior@gmail.com', '''padrao''', '''confirmar''', 'luiz', '123');
+(1, '01646998480', 'ricardo luiz da silva junior', 'junior@gmail.com', 'padrao', 'confirmar', 'luiz', '123'),
+(2, '01648549870', 'Suporte Do Sistema', 'suporte@datamy.com', 'suporte', 'confirmar', 'suporte', '123'),
+(3, '01678412470', 'Administrador do Sistema', 'admin@datamy.com', 'administrador', 'confirmar', 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -187,7 +182,7 @@ ALTER TABLE `cartaocredito`
 -- AUTO_INCREMENT for table `chamado`
 --
 ALTER TABLE `chamado`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `comprarelatorio`
 --
@@ -202,7 +197,7 @@ ALTER TABLE `estatistica`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --

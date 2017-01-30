@@ -155,7 +155,7 @@
                                     <div class="list-group">                                        
                                         <ui:repeat value="#{comprarrelatorio.findRelatoriosComprados()}" var="relatorios">                                                                                                                                    
                                             <h:form>
-                                                <h:commandLink action="#{estatistica.criarEstatistica(relatorios)}" class="list-group-item">                                                                                                                                                            
+                                                <h:commandLink action="teste.xhtml" class="list-group-item">                                                                                                                                                            
                                                     <span class="badge" style="#{estatistica.colorLink(relatorios)}"><h:outputText value="#{estatistica.textLink(relatorios)}" /></span>
                                                     <i class="fa fa-fw fa-file-text-o"></i> Relatórios Disponível
                                                 </h:commandLink>

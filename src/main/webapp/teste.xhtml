@@ -8,24 +8,121 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:head>        
+        <meta charset="utf-8" />
+
+        <!-- Site Title -->
+        <title>DataMy</title>
+
+        <!--
+        Google Fonts
+        ============================================= -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css" />
+        <link href="resources/css/graficos.css" rel="stylesheet" type="text/css"/>
+        <!--
+        resources/css
+        ============================================= -->
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="resources/css/font-awesome.min.css" />
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="resources/css/jquery.fancybox.css" />
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="resources/css/owl.carousel.css" />
+        <!-- Animate -->
+        <link rel="stylesheet" href="resources/css/animate.css" />
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="resources/css/main.css" />
+        <!-- Main Responsive -->
+        <link rel="stylesheet" href="resources/css/responsive.css" />
+
+
+        <!-- Modernizer Script for old Browsers -->
+        <script src="resources/js/vendor/modernizr-2.6.2.min.js"></script>
+   
     </h:head>
     <h:body>
-        <div id="graficos">
-            <div id="pieTT">
-                <p:chart type="pie" model="#{chartTwitter.pieModel1}" style="width:400px;height:300px" />             
-            </div>
-            <div id="pieFB">
-                <p:chart type="pie" model="#{chartFacebook.pieModel2}" style="width:400px;height:300px" />
-            </div>
-            <div id="barTT">
-                <p:chart type="bar" model="#{barTwitter.horizontalBarModel}" style="width:600px;height:300px"/>
-            </div>
-            <div id="barFB">
-                <p:chart type="bar" model="#{barFacebook.horizontalBarModel}" style="width:600px;height:300px"/>
-            </div>            
+        <div id="wrapper">
+            <!-- Navigation COPIAR PARA TODAS AS PAGINAS-->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="teste.xhtml">DataMy Administrativo</a>
+                </div>
+                         
+                <!-- Topo Menu Items -->
+                <ul class="nav navbar-right top-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <h:outputText value=" #{usuario.usuario.nome}" /> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-envelope"></i> Mensagem</a>
+                            </li>
+                            <li>
+                                <a href="abrirchamado.xhtml"><i class="fa fa-fw fa-gear"></i> Suporte</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="index.xhtml"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>                
+                <!-- /.navbar-collapse -->
+            </nav>
         </div>
+            <div id="page-wrapper">
+
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                Bem vindo ao DataMy <small><h:outputText value="#{usuario.usuario.nome}" /></small>
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li class="active">
+                                    Consulte os dados que tratamos para você!
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <table contenteditable="true" style="position: absolute;left: 13%;">
+            <tr>
+                <td style="align-content: center">                                    
+                    <p:chart type="pie" model="#{chartTwitter.pieModel1}" style="width:500px;height:300px" />                                 
+                </td>                
+                <td style="align-content: center">                    
+                    <p:chart type="pie" model="#{chartFacebook.pieModel2}" style="width:500px;height:300px" />                    
+                </td>                
+            </tr>
+            <tr>
+                <td style="align-content: center">
+                    <div id="barTT">
+                        <p:chart type="bar" model="#{barTwitter.horizontalBarModel}" style="width:500px;height:300px"/>
+                    </div>
+                </td>
+                <td style="align-content: center">
+                    <div id="barFB">
+                        <p:chart type="bar" model="#{barFacebook.horizontalBarModel}" style="width:500px;height:300px"/>
+                    </div>            
+                </td>
+            </tr>
+        </table>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="resources/js/bootstrap.min.js"></script>
     </h:body>
 </html>

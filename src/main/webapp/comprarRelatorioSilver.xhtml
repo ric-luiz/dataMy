@@ -146,7 +146,7 @@
                                 ========================== -->  
                                 <div class="input-group" >
                                     <label class="input-group input-group-addon"><b class="glyphicon glyphicon-credit-card"></b></label>
-                                    <outputText class="form-control"/> <b>Tipo de Cartão</b>
+                                    <b class="form-control">Tipo de Cartão</b>
                                 </div>
                                 <div class="form-group form-inline">
 
@@ -175,16 +175,16 @@
                                 ========================== -->  
                                 <div class="input-group" >
                                     <label class="input-group input-group-addon"><b class="glyphicon glyphicon-barcode"></b></label>
-                                    <outputText class="form-control"/><b>Parcelas</b>
+                                    <b class="form-control">Parcelas</b>
                                 </div> 
                                 <div class="form-group">                                    
                                     <h:panelGrid columns="1">
-                                        <h:selectOneRadio value="#{comprarrelatorio.compraRelatorio.numeroParcelas}" class="form-group" required="true">
-                                            <f:selectItem itemValue="1" itemLabel="1 X R$ 200,00"/>
-                                            <f:selectItem itemValue="2" itemLabel="2 X R$ 101,00"/>
-                                            <f:selectItem itemValue="3" itemLabel="3 X R$ 67,00"/>
-                                            <f:selectItem itemValue="4" itemLabel="4 X R$ 53,00"/>
-                                        </h:selectOneRadio>
+                                        <h:selectOneMenu value="#{comprarrelatorio.compraRelatorio.numeroParcelas}" class="form-group" required="true">
+                                            <f:selectItem itemValue="1" itemLabel="1 X R$ 400,00"/>
+                                            <f:selectItem itemValue="2" itemLabel="2 X R$ 202,00"/>
+                                            <f:selectItem itemValue="3" itemLabel="3 X R$ 135,00"/>
+                                            <f:selectItem itemValue="4" itemLabel="4 X R$ 110,00"/>
+                                        </h:selectOneMenu>
                                     </h:panelGrid>
                                 </div>
                                 <!--

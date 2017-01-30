@@ -95,7 +95,7 @@ public class BarTwitter implements Serializable {
         Axis xAxis = horizontalBarModelTwitter.getAxis(AxisType.X);
         xAxis.setLabel("Quantidade de ocorrências");
         xAxis.setMin(0);
-        xAxis.setMax(++maior);
+        xAxis.setMax(maior+10);
          
         Axis yAxis = horizontalBarModelTwitter.getAxis(AxisType.Y);
         yAxis.setLabel("Palavras");        

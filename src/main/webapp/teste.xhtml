@@ -14,12 +14,18 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <div id="graficos">
-            <div id="chartTwitter">
-                <p:chart type="pie" model="#{pizza.pieModel1}" style="width:400px;height:300px" />
+            <div id="pieTT">
+                <p:chart type="pie" model="#{chartTwitter.pieModel1}" style="width:400px;height:300px" />             
             </div>
-            <div id="chartFacebook">
-                <p:chart type="pie" model="#{pizza.pieModel2}" style="width:400px;height:300px" />
+            <div id="pieFB">
+                <p:chart type="pie" model="#{chartFacebook.pieModel2}" style="width:400px;height:300px" />
             </div>
+            <div id="barTT">
+                <p:chart type="bar" model="#{barTwitter.horizontalBarModel}" style="width:600px;height:300px"/>
+            </div>
+            <div id="barFB">
+                <p:chart type="bar" model="#{barFacebook.horizontalBarModel}" style="width:600px;height:300px"/>
+            </div>            
         </div>
     </h:body>
 </html>

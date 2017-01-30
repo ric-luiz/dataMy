@@ -27,6 +27,7 @@ public class BarFacebook implements Serializable {
     private GraficosDAO charts;
     private BarChartModel barModel;
     private HorizontalBarChartModel horizontalBarModelTwitter;
+    
  
     @PostConstruct
     public void init() {
@@ -65,35 +66,36 @@ public class BarFacebook implements Serializable {
     }
     
     private void createHorizontalBarModelFacebook(List<Facebook> lista) {
-        horizontalBarModelTwitter = new HorizontalBarChartModel();        
-        String palavras [];
+        horizontalBarModelTwitter = new HorizontalBarChartModel();               
+        int maior = 0;
         ChartSeries boys = new ChartSeries(); 
         boys.setLabel("Comentários");
         
         //laço para percorrer as palavras do array, mostrando a quantidade de ocorrencias e quais foram
-        for(Facebook fb:lista){
-            
-        }
-        
-        
-        
-        boys.set("2004", 50);
-        boys.set("2005", 96);
-        boys.set("2006", 44);
-        boys.set("2007", 55);
-        boys.set("2008", 25);
-         
- 
-        horizontalBarModelTwitter.addSeries(boys);        
-         
+        for(Facebook fb:lista){            
+            String comentarios = fb.getComentarios();            
+            String[] parts = comentarios.split(" ");
+            for (String part : parts) {
+                int ocorrencias = 0;
+                for(String part2 : parts){
+                    if (part == null ? part2 == null : part.equals(part2)){
+                        ocorrencias++;
+                        if (ocorrencias > maior)
+                            maior = ocorrencias;
+                    }   
+                boys.set(part, ocorrencias);
+                }                           
+            }                        
+        }          
+        horizontalBarModelTwitter.addSeries(boys);                 
         horizontalBarModelTwitter.setTitle("Palavras citadas no Facebook");
         horizontalBarModelTwitter.setLegendPosition("e");
         horizontalBarModelTwitter.setStacked(true);
          
         Axis xAxis = horizontalBarModelTwitter.getAxis(AxisType.X);
-        xAxis.setLabel("Quantidade");
+        xAxis.setLabel("Quantidade de ocorrências");
         xAxis.setMin(0);
-        xAxis.setMax(200);
+        xAxis.setMax(++maior);
          
         Axis yAxis = horizontalBarModelTwitter.getAxis(AxisType.Y);
         yAxis.setLabel("Palavras");        

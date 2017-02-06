@@ -161,6 +161,11 @@ CREATE TABLE `twitter` (
 
 -- --------------------------------------------------------
 
+INSERT INTO `facebook` (`idDadosFacebook`, `gostei`, `amei`, `haha`, `triste`, `raiva`, `comentarios`, `uou`) VALUES
+(1, 2345, 3421, 123, 42, 45, 'maravilha maravilhoso gostei amei maravilha gostei maravilha', 450);
+INSERT INTO `twitter` (`idDadosTwitter`, `curtidas`, `retweets`, `falandoSobre`, `replys`) VALUES
+(1, 2131, 345, 345, 'melhor incrivel esplendido maravilhoso melhor amei amei amei melhor maravilhoso');
+
 --
 -- Indexes for dumped tables
 --

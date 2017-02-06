@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"          
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
 
         <meta charset="utf-8"/>
 
@@ -20,9 +22,9 @@
         <!-- Custom Fonts -->
         <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-    </head>
+    </h:head>
 
-    <body>
+    <h:body>
         
         <div id="wrapper">
 
@@ -109,75 +111,25 @@
                     ========================== -->
                     
                     <div class="col-lg-10 col-lg-offset-2">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> Relatórios de Chamados</h3>
+                        <div class="col-lg-12">                            
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <p:chart type="line" model="#{chamado.chamadoGraficoPorDiaAberto()}"/>
                                 </div>
-                                
-                                <br/><br/>
-                                
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <!--
-                                        Data inicial
-                                        ========================== -->
-                                        <div class="col-md-4">
-                                            <div class="input-group" >
-                                                <label class="input-group input-group-addon"><b class="glyphicon glyphicon-calendar"></b> De: </label>
-                                                <input type="date" class="form-control"/>
-                                            </div>    
-                                        </div>
-                                        <!--
-                                        End Data inicial
-                                        ========================== -->
-                                        <!--
-                                        Data final
-                                        ========================== -->
-                                        <div class="col-md-4">
-                                            <div class="input-group" >
-                                                <label class="input-group input-group-addon"><b class="glyphicon glyphicon-calendar"></b> Até: </label>
-                                                <input type="date" class="form-control"/>
-                                            </div> 
-                                        </div>
-                                        <!--
-                                        End Data final
-                                        ========================== -->
-                                        
-                                        <!--
-                                        Detalhamento
-                                        ========================== -->
-                                        <div class="col-md-4">
-                                            <div class="input-group" >
-                                                <label class="input-group input-group-addon"><b class="glyphicon glyphicon-file"></b> Detalhamento: </label>
-                                                <select class="form-control" id="opcao">
-                                                    <option id="diario">Diário</option>
-                                                    <option id="semanal">Semanal</option> 
-                                                    <option id="mensal">Mensal</option>
-                                                    <option id="anual">Anual</option>
-                                                </select>    
-                                            </div>
-                                        </div>
-                                        <!--
-                                        End Detalhamento
-                                        ========================== -->
-                                        
-                                       <!--
-                                        Botão
-                                        ========================== -->
-                                        <div class="col-md-4 col-sm-offset-5">
-                                            <br/><br/>
-                                            <button type="button" class="btn btn-success btn-default">
-                                                Gerar Relatório
-                                            </button>
-                                        </div> 
-                                        <!--
-                                        End Botão
-                                        ========================== -->
-                                    </div>
+                                <div class="col-lg-6">
+                                    <p:chart type="pie" model="#{chamado.chamadoGraficoPorTipo()}"/>
                                 </div>
-                                
                             </div>
+                            <br/><br/><br/>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <p:chart type="pie" model="#{chamado.chamadoGraficoPorStatus()}"/>
+                                </div>
+                                <div class="col-lg-6">                                    
+                                    <p:chart type="line" model="#{chamado.chamadoGraficoPorDiaFechado()}"/>
+                                </div>
+                            </div>
+                            <br/><br/><br/>
                         </div>
                     </div>
                     <!--
@@ -198,5 +150,5 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
-    </body>
+    </h:body>
 </html>

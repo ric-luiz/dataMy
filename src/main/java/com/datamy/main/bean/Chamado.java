@@ -7,16 +7,16 @@ import java.util.Date;
  * @author Dextter
  */
 public class Chamado {
-    private int id;
-    private String titulo;
-    private String tipo;
-    private Date dataInicio;
-    private Date dataFim;
-    private String status;
-    private String descricao;
-    private String pathImagem;
-    private Usuario user;
-
+    protected int id;
+    protected String titulo;
+    protected String tipo;
+    protected Date dataInicio;
+    protected Date dataFim;
+    protected String status;
+    protected String descricao;
+    protected String pathImagem;
+    protected Usuario user;    
+    
     public int getId() {
         return id;
     }

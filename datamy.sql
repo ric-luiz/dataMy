@@ -142,6 +142,7 @@ CREATE TABLE `facebook` (
   `haha` int(11) NOT NULL,
   `triste` int(11) NOT NULL,
   `raiva` int(11) NOT NULL,
+  `uou` int(11) NOT NULL,
   `comentarios` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -160,6 +161,11 @@ CREATE TABLE `twitter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+
+INSERT INTO `facebook` (`idDadosFacebook`, `gostei`, `amei`, `haha`, `triste`, `raiva`, `comentarios`, `uou`) VALUES
+(1, 2345, 3421, 123, 42, 45, 'maravilha maravilhoso gostei amei maravilha gostei maravilha', 450);
+INSERT INTO `twitter` (`idDadosTwitter`, `curtidas`, `retweets`, `falandoSobre`, `replys`) VALUES
+(1, 2131, 345, 345, 'melhor incrivel esplendido maravilhoso melhor amei amei amei melhor maravilhoso');
 
 --
 -- Indexes for dumped tables

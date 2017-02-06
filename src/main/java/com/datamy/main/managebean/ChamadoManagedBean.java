@@ -3,12 +3,15 @@ package com.datamy.main.managebean;
 import com.datamy.main.bean.Chamado;
 import com.datamy.main.bean.Usuario;
 import com.datamy.main.dao.ChamadoDao;
+import com.datamy.main.managebean.graficos.ChamadoLineChart;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import org.primefaces.model.chart.LineChartModel;
+import org.primefaces.model.chart.PieChartModel;
 
 /**
  *
@@ -29,7 +32,7 @@ public class ChamadoManagedBean implements Serializable {
     public ChamadoManagedBean() {
         this.chamadoDao = new ChamadoDao();
         this.chamado = new Chamado();
-        this.user = new Usuario();
+        this.user = new Usuario();     
     }
     
     public String criarChamado(){        
@@ -81,6 +84,42 @@ public class ChamadoManagedBean implements Serializable {
         
         return "atenderChamado.xhtml?faces-redirect=true";
     }
+    
+    public String redirecionarGrafico(){
+        return "graficoChamados.xhtml";
+    }
+    
+    /*-----------------Graficos De CHamado-----------------*/
+    
+    //Chamados abertos por dia linecharts
+    public LineChartModel chamadoGraficoPorDiaAberto(){
+        ChamadoLineChart grafico = new ChamadoLineChart();
+        grafico.criarGraficoLinePorDiaAbereto();
+        return grafico.getChamadoPorDiaAberto();
+    }
+    
+    //Chamados abertos por dia linecharts
+    public LineChartModel chamadoGraficoPorDiaFechado(){
+        ChamadoLineChart grafico = new ChamadoLineChart();
+        grafico.criarGraficoLinePorDiaFechado();
+        return grafico.getChamadosPorDiaFechado();
+    }
+    
+    //Chamados por Tipo piecharts
+    public PieChartModel chamadoGraficoPorTipo(){
+        ChamadoLineChart grafico = new ChamadoLineChart();
+        grafico.criarGraficoPieTipo();
+        return grafico.getChamadoPorTipo();
+    }
+    
+    //Chamados por Status piecharts
+    public PieChartModel chamadoGraficoPorStatus(){
+        ChamadoLineChart grafico = new ChamadoLineChart();
+        grafico.criarGraficoPieStatus();
+        return grafico.getChamadoPorstatus();
+    }
+            
+    /*-----------------------------------------------------*/
     
     public Chamado getChamado() {
         return chamado;

@@ -142,6 +142,7 @@ CREATE TABLE `facebook` (
   `haha` int(11) NOT NULL,
   `triste` int(11) NOT NULL,
   `raiva` int(11) NOT NULL,
+  `uou` int(11) NOT NULL,
   `comentarios` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

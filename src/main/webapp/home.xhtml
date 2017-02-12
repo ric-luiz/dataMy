@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"          
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -156,9 +157,9 @@
                                     <div class="list-group">                                        
                                         <ui:repeat value="#{comprarrelatorio.findRelatoriosComprados()}" var="relatorios">                                                                                                                                    
                                             <h:form>
-                                                <h:commandLink action="teste.xhtml" class="list-group-item">                                                                                                                                                            
+                                                <h:commandLink action="informacoesEstatistica.xhtml" class="list-group-item">                                                                                                                                                            
                                                     <span class="badge" style="#{estatistica.colorLink(relatorios)}"><h:outputText value="#{estatistica.textLink(relatorios)}" /></span>
-                                                    <i class="fa fa-fw fa-file-text-o"></i> Relatórios Disponível
+                                                    <i class="fa fa-fw fa-file-text-o"></i><h:outputText value="#{estatistica.text(relatorios)}"/>                                                 
                                                 </h:commandLink>
                                             </h:form>                                                                                        
                                         </ui:repeat>                                        
@@ -189,7 +190,11 @@
                                                 <ui:repeat value="#{comprarrelatorio.findComprasRelatorios()}" var="compras">
                                                     <tr>
                                                         <td><h:outputText value="#{compras.id}"/></td>
-                                                        <td><h:outputText value="#{compras.dataCompraRelatorio}"/></td>
+                                                        <td>
+                                                            <h:outputText value="#{compras.dataCompraRelatorio}">
+                                                                <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                                            </h:outputText>
+                                                        </td>
                                                         <td>Tipo <h:outputText value="#{compras.tipo}"/></td>
                                                         <td>R$<h:outputText value="#{compras.valorCompra}"/></td>
                                                     </tr>

@@ -19,12 +19,12 @@ public class EstatisticaDao extends ConexaoDao{
         ArrayList<Estatistica> estatisticas = new ArrayList<Estatistica>();
         try {
             
-            preparacao = conexao.prepareStatement("SELECT id FROM estatistica WHERE compraRelatorio_id = ?");
+            preparacao = conexao.prepareStatement("SELECT id,status,datauso FROM estatistica WHERE compraRelatorio_id = ?");
             preparacao.setInt(1, compras.getId());
             resultado = preparacao.executeQuery();
             
             while(resultado.next()){
-                estatisticas.add(new Estatistica(resultado.getInt("id")));
+                estatisticas.add(new Estatistica(resultado.getInt("id"),resultado.getString("status"),resultado.getDate("datauso")));
             }
             
         } catch (SQLException ex) {

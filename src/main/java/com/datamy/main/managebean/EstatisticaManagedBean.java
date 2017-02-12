@@ -1,7 +1,12 @@
 package com.datamy.main.managebean;
 
+import com.datamy.main.bean.Estatistica;
 import com.datamy.main.dao.EstatisticaDao;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -28,19 +33,33 @@ public class EstatisticaManagedBean implements Serializable{
     
     }
     
-    public String colorLink(int id){
-        if(id==0){
+    public String colorLink(Estatistica estatistica){
+        if(estatistica==null){
             return "background-color: #5cb85c";
-        } else {
+        } else if(estatistica.getStatus().equals("Feito")){
             return "background-color: #a94442";
+        } else {
+            return "background-color: #ffe764; color:black";
         }                        
     }
     
-    public String textLink(int id){
-        if(id==0){
+    public String textLink(Estatistica estatistica){
+        if(estatistica==null){
             return "A Fazer";
         } else {
-            return "Usado";
+            return estatistica.getStatus();
+        }
+    }
+    
+    public String text(Estatistica estatistica) throws ParseException{
+        if(estatistica==null){
+            return "Relatório Disponível";
+        } else {
+            
+            Calendar c = Calendar.getInstance();
+            c.setTime(estatistica.getDataUso());
+            String data = c.get(Calendar.DAY_OF_MONTH)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
+            return "Relatório Usado em "+data;
         }
     }
 }

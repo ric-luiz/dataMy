@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"          
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+        <meta charset="utf-8"/>
+        <link rel="shortcut icon" href="resources/imagens/datamy.png" type="image/icon" /> 
+        <title>DataMy</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="resources/css/main.css"/>
+
+        <!-- Custom CSS -->
+        <link href="resources/css/sb-admin.css" rel="stylesheet"/>
+
+
+        <!-- Custom Fonts -->
+        <link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    </h:head>
+
+    <h:body>
+
+        <div id="wrapper">
+
+            <!--
+            Barra superior
+            ========================== -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="atenderChamado.xhtml">DataMy Administrativo - Relatórios</a>
+                </div>
+                <!-- Topo Menu Items -->
+                <ul class="nav navbar-right top-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> #{usuario.usuario.nome} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-envelope"></i> Mensagem</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-gear"></i> Configuração</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="index.xhtml"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!--
+            End Barra superior
+            ========================== -->
+
+                <!--
+                Barra lateral
+                ========================== -->    
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav side-nav">
+
+                        <li>
+                            <a href="home.xhtml"><i class="glyphicon glyphicon-phone-alt"></i> Home</a>
+                        </li>
+                        <li>
+                            <a href="abrirchamado.xhtml"><i class="glyphicon glyphicon-list-alt"></i> Abrir chamado</a>
+                        </li>
+                    </ul>
+                    <!--
+                    End menus
+                    ========================== -->
+                </div>
+
+            </nav>
+
+            <!--
+            Migalhas de pão e títulos e subtitulos
+            ========================== -->
+            <div id="page-wrapper">
+
+                <div class="container-fluid">
+
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <div class="col-lg-12">
+                            <h1 class="page-header"> <img src="resources/imagens/datamy.png"/>
+                                Relatório Completo <small>Formulário de Estatística</small>
+                            </h1>
+                        </div>
+                    </div>
+                    <!--
+                    End Migalhas de pão e títulos e subtitulos
+                    ========================== -->
+
+                    <!--
+                    Painel
+                    ========================== -->
+
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <div class="col-lg-12">                            
+                            <form action="teste.xhtml">
+                                
+                                <!--Palavras Chaves-->
+                                <div class="row">
+                                    <div class="col-lg-6 col-lg-offset-3">
+                                        <label class="h3">Conjunto de Palavras Chaves</label>
+                                        <div class="input-group" >
+                                            <label class="input-group input-group-addon"><b class="fa fa-book"></b></label>
+                                            <textArea class="form-control" placeholder="maça,pera,abacaxi,limão e etc" title="As palavras devem ser separadas por virgulas"></textArea>                                            
+                                        </div>  
+                                    </div>                                  
+                                </div>
+                                
+                                <!--Pagina do Facebook-->
+                                <div class="row">
+                                    <div class="col-lg-6 col-lg-offset-3">
+                                        <label class="h3">Página Facebook</label>
+                                        <div class="input-group" >
+                                            <label class="input-group input-group-addon"><b class="fa fa fa-facebook"></b></label>                            
+                                            <input class="form-control" placeholder="https://www.facebook.com/minhaEmpresa"/>
+                                        </div>  
+                                    </div>                                  
+                                </div>
+                                
+                                <!--Pagina do Twitter-->
+                                <div class="row">
+                                    <div class="col-lg-6 col-lg-offset-3">
+                                        <label class="h3">Página Twitter</label>
+                                        <div class="input-group" >
+                                            <label class="input-group input-group-addon"><b class="fa fa-twitter"></b></label>                            
+                                            <input class="form-control" placeholder="https://twitter.com/minhaEmpresa"/>
+                                        </div>  
+                                    </div>                                  
+                                </div>
+                                <br/><br/><br/>
+                                
+                                <!--Botão de Enviar-->
+                                <div class="row">
+                                    <div class="col-lg-6 col-lg-offset-3">
+                                        <button class="btn btn-primary">Enviar</button>
+                                    </div>                                  
+                                </div>
+                                     
+                                <br/><br/><br/>
+                            </form>
+                        </div>
+                    </div>
+                    <!--
+                    End Painel
+                    ========================== -->
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+    </h:body>
+</html>

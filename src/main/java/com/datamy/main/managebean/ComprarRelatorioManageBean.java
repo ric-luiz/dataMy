@@ -54,9 +54,9 @@ public class ComprarRelatorioManageBean implements Serializable {
     }
     
     //Pega a lista de relatorios associados a compra do usuario
-    public ArrayList<Integer> findRelatoriosComprados(){
+    public ArrayList<Estatistica> findRelatoriosComprados(){
         ArrayList<CompraRelatorio> compras = cDao.getComprasRelatorios(user);
-        ArrayList<Integer> estatisticas = new ArrayList<Integer>();
+        ArrayList<Estatistica> estatisticas = new ArrayList<Estatistica>();
         
         for(CompraRelatorio compra : compras){            
             inserirArrayEstatisticas(compra, estatisticas, this.eDao.getEstatisticas(compra));            
@@ -66,23 +66,17 @@ public class ComprarRelatorioManageBean implements Serializable {
     }
     
     //Vai preencher o array de relatorios associados a compra
-    private void inserirArrayEstatisticas(CompraRelatorio compra, ArrayList<Integer> arrayEstatisticas, ArrayList<Estatistica> estatisticas){                
-        if(compra.getTipo().equals("Bronze")){
-            preencherArray(arrayEstatisticas, estatisticas, 5);
-        } else if(compra.getTipo().equals("Silver")){
-            preencherArray(arrayEstatisticas, estatisticas, 10);
-        } else if(compra.getTipo().equals("Gold")){
-            preencherArray(arrayEstatisticas, estatisticas, 15);
-        }        
+    private void inserirArrayEstatisticas(CompraRelatorio compra, ArrayList<Estatistica> arrayEstatisticas, ArrayList<Estatistica> estatisticas){                
+        preencherArray(arrayEstatisticas, estatisticas, compra.getQuantidade());    
     }
     
     //Insere no array o id do relatorio ja feito, caso não tenha sido feito insere o 0(o que diz que o relatorio ainda pode ser feito)
-    private void preencherArray(ArrayList<Integer> arrayEstatisticas, ArrayList<Estatistica> estatisticas, int numeroRelatorios){
+    private void preencherArray(ArrayList<Estatistica> arrayEstatisticas, ArrayList<Estatistica> estatisticas, int numeroRelatorios){
         for(int i = 0; i < numeroRelatorios; i++){            
             if(i < estatisticas.size()){
-                arrayEstatisticas.add(estatisticas.get(i).getId());
+                arrayEstatisticas.add(estatisticas.get(i));
             } else {
-                arrayEstatisticas.add(0);
+                arrayEstatisticas.add(null);
             }            
         }
     }

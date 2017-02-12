@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Jan-2017 às 20:06
+-- Generation Time: 12-Fev-2017 às 02:12
 -- Versão do servidor: 10.1.19-MariaDB
--- PHP Version: 5.5.38
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -42,7 +42,8 @@ INSERT INTO `cartaocredito` (`id`, `nomeTitular`, `numero`, `usuario_id`) VALUES
 (2, 'luiz silva junior', 1276351, 1),
 (3, 'junior luiz silva', 213542112, 1),
 (4, 'luiz junior silva', 13151673, 1),
-(5, 'luiz silva Junior', 4313422, 1);
+(5, 'luiz silva Junior', 4313422, 1),
+(6, 'teste', 3123, 1);
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,8 @@ CREATE TABLE `comprarelatorio` (
 
 INSERT INTO `comprarelatorio` (`id`, `dataCompraRelatorio`, `valorCompra`, `parcelas`, `quantidade`, `usuario_id`) VALUES
 (1, '2017-01-21 19:59:19', 200, 9, 5, 1),
-(7, '2017-01-24 23:53:51', 400, 2, 10, 1);
+(7, '2017-01-24 23:53:51', 400, 2, 10, 1),
+(8, '2017-02-06 14:47:42', 200, 1, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -93,6 +95,8 @@ INSERT INTO `comprarelatorio` (`id`, `dataCompraRelatorio`, `valorCompra`, `parc
 
 CREATE TABLE `estatistica` (
   `id` int(10) UNSIGNED NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'A fazer',
+  `dataUso` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `caminhoArquivo` varchar(255) NOT NULL,
   `compraRelatorio_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -101,9 +105,56 @@ CREATE TABLE `estatistica` (
 -- Extraindo dados da tabela `estatistica`
 --
 
-INSERT INTO `estatistica` (`id`, `caminhoArquivo`, `compraRelatorio_id`) VALUES
-(1, 'teste', 1),
-(2, 'outro teste', 7);
+INSERT INTO `estatistica` (`id`, `status`, `dataUso`, `caminhoArquivo`, `compraRelatorio_id`) VALUES
+(1, 'Feito', '2017-02-11 21:19:14', 'teste', 1),
+(2, 'Feito', '2017-02-11 21:19:14', 'Usado', 7),
+(3, 'Gerando', '2017-02-11 21:19:14', 'teste', 8),
+(4, 'Gerando', '2017-02-11 21:19:14', 'teste', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `facebook`
+--
+
+CREATE TABLE `facebook` (
+  `idDadosFacebook` int(11) NOT NULL,
+  `gostei` int(11) NOT NULL,
+  `amei` int(11) NOT NULL,
+  `haha` int(11) NOT NULL,
+  `triste` int(11) NOT NULL,
+  `raiva` int(11) NOT NULL,
+  `comentarios` varchar(255) NOT NULL,
+  `uou` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `facebook`
+--
+
+INSERT INTO `facebook` (`idDadosFacebook`, `gostei`, `amei`, `haha`, `triste`, `raiva`, `comentarios`, `uou`) VALUES
+(1, 2345, 3421, 123, 42, 45, 'maravilha maravilhoso gostei amei maravilha gostei maravilha', 450);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `twitter`
+--
+
+CREATE TABLE `twitter` (
+  `idDadosTwitter` int(11) NOT NULL,
+  `curtidas` int(11) NOT NULL,
+  `retweets` int(11) NOT NULL,
+  `falandoSobre` int(11) NOT NULL,
+  `replys` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `twitter`
+--
+
+INSERT INTO `twitter` (`idDadosTwitter`, `curtidas`, `retweets`, `falandoSobre`, `replys`) VALUES
+(1, 2131, 345, 345, 'melhor incrivel esplendido maravilhoso melhor amei amei amei melhor maravilhoso');
 
 -- --------------------------------------------------------
 
@@ -130,42 +181,6 @@ INSERT INTO `usuario` (`id`, `cpf`, `nomecompleto`, `email`, `perfil`, `status`,
 (1, '01646998480', 'ricardo luiz da silva junior', 'junior@gmail.com', 'padrao', 'confirmar', 'luiz', '123'),
 (2, '01648549870', 'Suporte Do Sistema', 'suporte@datamy.com', 'suporte', 'confirmar', 'suporte', '123'),
 (3, '01678412470', 'Administrador do Sistema', 'admin@datamy.com', 'administrador', 'confirmar', 'admin', 'admin');
-
---
--- Estrutura da tabela `facebook`
---
-
-CREATE TABLE `facebook` (
-  `idDadosFacebook` int(11) NOT NULL,
-  `gostei` int(11) NOT NULL,
-  `amei` int(11) NOT NULL,
-  `haha` int(11) NOT NULL,
-  `triste` int(11) NOT NULL,
-  `raiva` int(11) NOT NULL,
-  `uou` int(11) NOT NULL,
-  `comentarios` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `twitter`
---
-
-CREATE TABLE `twitter` (
-  `idDadosTwitter` int(11) NOT NULL,
-  `curtidas` int(11) NOT NULL,
-  `retweets` int(11) NOT NULL,
-  `falandoSobre` int(11) NOT NULL,
-  `replys` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
-INSERT INTO `facebook` (`idDadosFacebook`, `gostei`, `amei`, `haha`, `triste`, `raiva`, `comentarios`, `uou`) VALUES
-(1, 2345, 3421, 123, 42, 45, 'maravilha maravilhoso gostei amei maravilha gostei maravilha', 450);
-INSERT INTO `twitter` (`idDadosTwitter`, `curtidas`, `retweets`, `falandoSobre`, `replys`) VALUES
-(1, 2131, 345, 345, 'melhor incrivel esplendido maravilhoso melhor amei amei amei melhor maravilhoso');
 
 --
 -- Indexes for dumped tables
@@ -213,22 +228,22 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `cartaocredito`
 --
 ALTER TABLE `cartaocredito`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `chamado`
 --
 ALTER TABLE `chamado`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2568;
 --
 -- AUTO_INCREMENT for table `comprarelatorio`
 --
 ALTER TABLE `comprarelatorio`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `estatistica`
 --
 ALTER TABLE `estatistica`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `usuario`
 --

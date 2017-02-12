@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.datamy.main.bean;
+
+import java.util.Date;
 
 /**
  *
@@ -11,6 +8,8 @@ package com.datamy.main.bean;
  */
 public class Estatistica {
     private int id;
+    private String status;
+    private Date dataUso;
     private String caminhoArquivo;
     private CompraRelatorio idCompraRelatorio;
     private Twitter idDadosTwitter;
@@ -55,7 +54,22 @@ public class Estatistica {
     public void setIdDadosFacebook(Facebook idDadosFacebook) {
         this.idDadosFacebook = idDadosFacebook;
     }
-        
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getDataUso() {
+        return dataUso;
+    }
+
+    public void setDataUso(Date dataUso) {
+        this.dataUso = dataUso;
+    }        
 
     public Estatistica(int id, String caminhoArquivo, CompraRelatorio idCompraRelatorio, Twitter idDadosTwitter, Facebook idDadosFacebook) {
         this.id = id;
@@ -72,5 +86,11 @@ public class Estatistica {
     public Estatistica(int id) {
         this.id = id;
     }
+
+    public Estatistica(int id, String status, Date dataUso) {
+        this.id = id;
+        this.status = status;
+        this.dataUso = dataUso;
+    }        
         
 }

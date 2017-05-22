@@ -61,7 +61,7 @@ public class ComentarioFBDao extends ConexaoPGDao{
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(ChamadoDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ComentarioFBDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             fecharConexao();
         }

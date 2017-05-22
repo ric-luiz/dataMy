@@ -23,7 +23,7 @@ public class ConexaoPGDao implements Serializable{
     private static final long serialVersionUID = 1L;                    
     
     protected static final String JDBC_DRIVER = "org.postgresql.Driver";
-    protected static final String BANCO = "jdbc:postgresql://localhost:5432/dataMy";
+    protected static final String BANCO = "jdbc:postgresql://localhost:5432/postgres";
     
     protected static final String USER = "postgres";
     protected static final String PASS = "senha";

@@ -26,7 +26,7 @@ public class ConexaoPGDao implements Serializable{
     protected static final String BANCO = "jdbc:postgresql://localhost:5432/dataMy";
     
     protected static final String USER = "postgres";
-    protected static final String PASS = "12345";
+    protected static final String PASS = "senha";
     
     protected Statement consulta;
     protected ResultSet resultado;
@@ -41,9 +41,9 @@ public class ConexaoPGDao implements Serializable{
             consulta = conexao.createStatement();
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexaoPGDao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexaoPGDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -55,7 +55,7 @@ public class ConexaoPGDao implements Serializable{
             fecharStatement();
             
         } catch (SQLException ex) {
-            Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexaoPGDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -64,7 +64,7 @@ public class ConexaoPGDao implements Serializable{
             try {
                 consulta.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ConexaoPGDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -74,7 +74,7 @@ public class ConexaoPGDao implements Serializable{
             try {
                 preparacao.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ConexaoPGDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -84,7 +84,7 @@ public class ConexaoPGDao implements Serializable{
             try {
                 resultado.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ConexaoPGDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

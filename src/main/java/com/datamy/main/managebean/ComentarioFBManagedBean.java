@@ -11,11 +11,15 @@ import com.datamy.main.dao.ChamadoDao;
 import com.datamy.main.dao.ComentarioFBDao;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author pablo
  */
+@ManagedBean(name = "comentario")
+@RequestScoped
 public class ComentarioFBManagedBean implements Serializable{
     private static final long serialVersionUID = 1L;    
     

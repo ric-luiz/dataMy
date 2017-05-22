@@ -49,7 +49,7 @@ public class ComentarioFBDao extends ConexaoPGDao{
     }
     
     public ArrayList<ComentarioFB> select(){
-        comentarios_fb = new ArrayList<ComentarioFB>();
+        ArrayList<ComentarioFB> comentarios_fb = new ArrayList<ComentarioFB>();
         CriarConexao();
         
         try {

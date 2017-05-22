@@ -1,4 +1,4 @@
-package com.datamy.main.dao;
+package com.datamy.main.connection.connectionFactory;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author ric_l
  */
-public class ConexaoDao implements Serializable{
+public class ConexaoMSQLDao implements Serializable{
     private static final long serialVersionUID = 1L;
     
     protected static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -36,9 +36,9 @@ public class ConexaoDao implements Serializable{
             consulta = conexao.createStatement();
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -50,7 +50,7 @@ public class ConexaoDao implements Serializable{
             fecharStatement();
             
         } catch (SQLException ex) {
-            Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -59,7 +59,7 @@ public class ConexaoDao implements Serializable{
             try {
                 consulta.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -69,7 +69,7 @@ public class ConexaoDao implements Serializable{
             try {
                 preparacao.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -79,7 +79,7 @@ public class ConexaoDao implements Serializable{
             try {
                 resultado.close();
             } catch (SQLException ex) {
-                Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ConexaoMSQLDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

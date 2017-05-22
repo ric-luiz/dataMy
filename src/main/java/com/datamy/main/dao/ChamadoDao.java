@@ -5,6 +5,7 @@
  */
 package com.datamy.main.dao;
 
+import com.datamy.main.connection.connectionFactory.ConexaoMSQLDao;
 import com.datamy.main.bean.Chamado;
 import com.datamy.main.bean.ChamadoGraficoDataCount;
 import com.datamy.main.bean.Usuario;
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Dextter
  */
-public class ChamadoDao extends ConexaoDao{
+public class ChamadoDao extends ConexaoMSQLDao{
     private UsuarioDao uDao;
     ArrayList<Chamado> chamados;                
     ArrayList<ChamadoGraficoDataCount> chamadosGrafico;                

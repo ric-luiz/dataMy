@@ -1,5 +1,6 @@
 package com.datamy.main.dao;
 
+import com.datamy.main.connection.connectionFactory.ConexaoMSQLDao;
 import com.datamy.main.bean.CartaoCredito;
 import com.datamy.main.bean.Usuario;
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ import java.util.logging.Logger;
  *
  * @author ric_l
  */
-public class CartaoCreditoDao extends ConexaoDao{
+public class CartaoCreditoDao extends ConexaoMSQLDao{
     
     private UsuarioDao uDao;
 

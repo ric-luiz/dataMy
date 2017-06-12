@@ -7,10 +7,14 @@ package com.datamy.main.managebean;
 
 import com.datamy.main.bean.Chamado;
 import com.datamy.main.bean.ComentarioFB;
+import com.datamy.main.bean.RespostasBot;
 import com.datamy.main.dao.ChamadoDao;
 import com.datamy.main.dao.ComentarioFBDao;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -33,5 +37,22 @@ public class ComentarioFBManagedBean implements Serializable{
     
     public ArrayList<ComentarioFB> listarComentarios(){                        
         return comantario_fb_dao.select();
+    }
+    
+    public ArrayList<RespostasBot> getRespostas(){
+        return comantario_fb_dao.respostasAceitas();
+    }
+    
+     public ArrayList<RespostasBot> getRespostasPendentes(){
+        return comantario_fb_dao.aceitarResposta();
+    }
+     
+    public String formularResposta(String comentario, int id){
+        try {
+            comentario = comantario_fb_dao.formular(comentario, id);
+        } catch (SQLException ex) {
+            Logger.getLogger(ComentarioFBManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return comentario;
     }
 }

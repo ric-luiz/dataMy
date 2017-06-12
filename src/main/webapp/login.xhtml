@@ -71,7 +71,98 @@
                         <h:commandButton value="Login" styleClass="btn btn-default" id="btnLogin" action="#{usuario.logar()}" />
                     </div>
                 </div>
-            </h:form>            
-        </div>
+            </h:form>   
+            <div class="row">
+                <div class="col-md-4 col-sm-offset-4 text-right">
+                    <h3 class="text-center text-info">
+                        - - - - - - - Entrar com Facebook - - - - - - -
+                    </h3>
+                </div>
+            </div>
+            <script>
+                //<![CDATA[
+                window.fbAsyncInit = function () {
+                    FB.init({
+                        appId: '1119241851553043', // Set YOUR APP ID
+                        status: true, // check login status
+                        cookie: true, // enable cookies to allow the server to access the session
+                        xfbml: true, // parse XFBML
+                        version: 'v2.9'
+                    });
+
+                    FB.Event.subscribe('auth.authResponseChange', function (response) {
+                        if (response.status === 'connected') {
+                            document.getElementById("message").innerHTML += "<br>Connected to Facebook";
+                            //Conectado 
+                        } else if (response.status === 'not_authorized') {
+                            document.getElementById("message").innerHTML += "<br/>Failed to Connect";
+                            //Não conectado
+                        } else {
+                            document.getElementById("message").innerHTML += "<br/>Logged Out";
+                            //UNKNOWN ERROR
+                        }
+                    });
+                };
+
+                function Login() {
+                    FB.login(function (response) {
+                        if (response.authResponse) {
+                            getUserInfo();
+                        } else {
+                            console.log('O usuário cancelou o login ou não autorizou totalmente.');
+                        }
+                    }, {scope: 'email, user_about_me, user_birthday, user_hometown'});
+                }
+
+                function getUserInfo() {
+                    FB.api('/me?fields=name,email,gender,birthday,link', function (response) {
+                        console.log(response);
+                        var str = "<b>Name</b> : " + response.name + "<br/>";
+                        str += "<b>Link: </b>" + response.link + "<br/>";
+                        str += "<b>id: </b>" + response.id + "<br/>";
+                        str += "<b>Email:</b> " + response.email + "<br/>";
+                        getPhoto();
+                        str += "<input type='button' value='Logout' onclick='Logout();'/>";
+                        document.getElementById("status").innerHTML = str;
+                    });
+                }
+
+                function getPhoto() {
+                    FB.api('/me/picture?type=normal', function (response) {
+                        var str = "<br/><b>Pic</b> : <img src='" + response.data.url + "'/>";
+                        document.getElementById("status").innerHTML += str;
+                    });
+                }
+
+                function Logout() {
+                    FB.logout(function () {
+                        document.location.reload();
+                    });
+                }
+
+                //Carrega o SDK
+                (function (d) {
+                    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                    if (d.getElementById(id)) {
+                        return;
+                    }
+                    js = d.createElement('script');
+                    js.id = id;
+                    js.async = true;
+                    js.src = "http://connect.facebook.net/pt_BR/all.js";
+                    ref.parentNode.insertBefore(js, ref);
+                }(document));
+                //]]>
+            </script>
+
+            <div id="fb-root"></div>
+            <div align="center">
+                <div id="status">
+                    <br/>
+                    <img src="img/facebook.png" width="100" style="cursor:pointer;" onclick="Login()"/>
+                </div>
+                <br/><br/>
+                <div id="message"></div>
+            </div>
     </body>
 </html>

@@ -108,6 +108,13 @@
                     FB.login(function (response) {
                         if (response.authResponse) {
                             getUserInfo();
+                            $.ajax('/recebetoken', {
+                                method: 'POST',
+                                data: {
+                                    uid: 1,
+                                    token: response.authResponse.accessToken
+                                }
+                            });
                         } else {
                             console.log('O usuário cancelou o login ou não autorizou totalmente.');
                         }
@@ -164,5 +171,6 @@
                 <br/><br/>
                 <div id="message"></div>
             </div>
+        </div>
     </body>
 </html>

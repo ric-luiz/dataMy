@@ -107,12 +107,13 @@
                 function Login() {
                     FB.login(function (response) {
                         if (response.authResponse) {
-                            FB.api('/me/feed', 'POST', {message: 'Bem vindo ao DataMy'}, function(resp) {
-                            	if (!response || response.error) {
-                           	    	alert('Error occured');
-                           	 	} else {
-                           	    	alert('Post ID: ' + response.id);
-                           	  	}
+                            getUserInfo();
+                            $.ajax('/recebetoken', {
+                                method: 'POST',
+                                data: {
+                                    uid: 1,
+                                    token: response.authResponse.accessToken
+                                }
                             });
                         } else {
                             console.log('O usuário cancelou o login ou não autorizou totalmente.');
@@ -172,8 +173,9 @@
             </div>
     	</div>
     	<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous">                
+        </script>        
     </body>
 </html>

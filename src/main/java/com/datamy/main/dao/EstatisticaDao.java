@@ -1,6 +1,7 @@
 package com.datamy.main.dao;
 
 import com.datamy.main.connection.connectionFactory.ConexaoMSQLDao;
+import com.datamy.main.connection.connectionFactory.ConexaoPGDao;
 import com.datamy.main.bean.CompraRelatorio;
 import com.datamy.main.bean.Estatistica;
 import java.sql.SQLException;
@@ -12,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author ric_l
  */
-public class EstatisticaDao extends ConexaoMSQLDao{
+public class EstatisticaDao extends ConexaoPGDao{
     
     public ArrayList<Estatistica> getEstatisticas(CompraRelatorio compras){
         

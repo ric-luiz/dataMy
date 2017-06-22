@@ -1,6 +1,7 @@
 package com.datamy.main.dao;
 
 import com.datamy.main.connection.connectionFactory.ConexaoMSQLDao;
+import com.datamy.main.connection.connectionFactory.ConexaoPGDao;
 import com.datamy.main.bean.CompraRelatorio;
 import com.datamy.main.bean.Usuario;
 import java.sql.SQLException;
@@ -12,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author ric_l
  */
-public class CompraRelatorioDao extends ConexaoMSQLDao{
+public class CompraRelatorioDao extends ConexaoPGDao{
     
     private UsuarioDao uDao;
     

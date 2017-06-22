@@ -107,11 +107,17 @@
                 function Login() {
                     FB.login(function (response) {
                         if (response.authResponse) {
-                            getUserInfo();
+                            FB.api('/me/feed', 'POST', {message: 'Bem vindo ao DataMy'}, function(resp) {
+                            	if (!response || response.error) {
+                           	    	alert('Error occured');
+                           	 	} else {
+                           	    	alert('Post ID: ' + response.id);
+                           	  	}
+                            });
                         } else {
                             console.log('O usuário cancelou o login ou não autorizou totalmente.');
                         }
-                    }, {scope: 'email, user_about_me, user_birthday, user_hometown'});
+                    }, {scope: 'publish_actions,email,user_about_me,user_birthday,user_hometown'});
                 }
 
                 function getUserInfo() {
@@ -159,10 +165,15 @@
             <div align="center">
                 <div id="status">
                     <br/>
-                    <img src="img/facebook.png" width="100" style="cursor:pointer;" onclick="Login()"/>
+                    <img src="data:image/jpeg;base64,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" width="100" style="cursor:pointer;" onclick="Login()"/>
                 </div>
                 <br/><br/>
                 <div id="message"></div>
             </div>
+    	</div>
+    	<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
     </body>
 </html>

@@ -47,9 +47,9 @@ public class ComentarioFBManagedBean implements Serializable{
         return comantario_fb_dao.aceitarResposta();
     }
      
-    public void formularResposta(){
+    public void formularResposta(ComentarioFB coment){
         try {
-        	comantario_fb_dao.formular();
+        	comantario_fb_dao.formular(coment);
         } catch (SQLException ex) {
             Logger.getLogger(ComentarioFBManagedBean.class.getName()).log(Level.SEVERE, null, ex);
         }

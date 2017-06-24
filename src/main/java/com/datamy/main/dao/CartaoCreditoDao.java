@@ -1,6 +1,5 @@
 package com.datamy.main.dao;
 
-import com.datamy.main.connection.connectionFactory.ConexaoMSQLDao;
 import com.datamy.main.connection.connectionFactory.ConexaoPGDao;
 import com.datamy.main.bean.CartaoCredito;
 import com.datamy.main.bean.Usuario;

@@ -106,9 +106,9 @@ public class ComentarioFBDao extends ConexaoPGDao {
         return comments;
     }
     
-    public String formular() throws SQLException {        
+    public String formular(ComentarioFB coment) throws SQLException {        
         String stmt = "UPDATE teste_json2 SET message='Resposta automatica' WHERE id = ?";
-        preparacao.setString(1, cmt.getId());
+        preparacao.setString(1, coment.getId());
         try {            
             consulta.executeUpdate(stmt);
             

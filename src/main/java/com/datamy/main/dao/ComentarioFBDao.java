@@ -54,10 +54,10 @@ public class ComentarioFBDao extends ConexaoPGDao {
         CriarConexao();
         
         try {
-            resultado = consulta.executeQuery("SELECT * FROM teste_json2");
+            resultado = consulta.executeQuery("SELECT * FROM comentario_fb_avaliados");
             
             while (resultado.next()) {                
-                comentarios_fb.add(new ComentarioFB(resultado.getString("from_id"), resultado.getString("from_name"), resultado.getString("message"), resultado.getString("created_time"),
+                comentarios_fb.add(new ComentarioFB(resultado.getString("row.names"), resultado.getString("post.from_id"), resultado.getString("message"), resultado.getString("created_time"),
                         resultado.getDouble("likes_count"), resultado.getString("comments_count"), resultado.getString("id")));
             }
             

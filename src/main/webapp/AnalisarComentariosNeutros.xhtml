@@ -50,11 +50,22 @@
                                                 <td><h:outputText value="#{comentarios.postCommentsCount}" /></td>
                                                 <td><h:outputText value="#{comentarios.commentsMessage}" /></td>                                                
                                                 <td>
-                                                    <h:form>
-                                                        <h:commandLink action="#{comentario.formularResposta(comentarios)}" value="Analisar"/>                                                            
-                                                    </h:form>
+                                                    <a class="btn" data-popup-open="popup-1" href="#">Responder</a>
+
+                                                    <div class="popup" data-popup="popup-1">
+                                                        <div class="popup-inner">
+                                                            <h2>Responder ao comentario de <h:outputText value="#{comentarios.commentsFromName}"/></h2>
+                                                            <br/>
+                                                            <h5>Comentario: <h:outputText value="#{comentarios.commentsMessage}"/></h5>
+                                                            <br/>
+
+                                                            <p>Resposta: <h:inputText value="#{comentarios.commentsFromName}, somos gratos por sua avaliação! Faremos bom uso do seu comentário de modo a melhorar nossos serviços!"/></p>
+                                                            <p><a data-popup-close="popup-1" href="#">Fechar</a><a data-popup-close="popup-1" href="#">Publicar</a></p>
+
+                                                            <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+                                                        </div>
+                                                    </div>                                                    
                                                 </td>
-                                                <td><a href="#"><i class="glyphicon glyphicon-share-alt"></i></a></td>
                                             </tr>
                                         </ui:repeat>                                               
                                     </tbody>

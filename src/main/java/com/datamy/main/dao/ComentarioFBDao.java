@@ -32,12 +32,34 @@ public class ComentarioFBDao extends ConexaoPGDao {
         
         try {
             
-            preparacao = conexao.prepareStatement("SELECT * FROM teste_json2");            
+            preparacao = conexao.prepareStatement("SELECT * FROM comentario_fb_avaliados WHERE post.id = ?");                        
+            //preparacao.setString(1, coment.getId());
             resultado = preparacao.executeQuery();            
             
             while (resultado.next()) {                
-                comentarios_fb.add(new ComentarioFB(resultado.getString("from_id"), resultado.getString("from_name"), resultado.getString("message"), resultado.getString("created_time"),
-                        resultado.getDouble("likes_count"), resultado.getString("comments_count"), resultado.getString("id")));
+                comentarios_fb.add(new ComentarioFB(
+                        resultado.getString("row.names"), 
+                        resultado.getString("post.from_id"), 
+                        resultado.getString("post.from_name"), 
+                        resultado.getString("post.message"),
+                        resultado.getString("post.created_time"), 
+                        resultado.getString("post.type"), 
+                        resultado.getString("post.link"), 
+                        resultado.getString("post.id"), 
+                        resultado.getString("post.likes_count"),
+                        resultado.getString("post.comments_count"), 
+                        resultado.getString("post.shares_count"), 
+                        resultado.getString("likes.from_name"), 
+                        resultado.getString("likes.from_id"),
+                        resultado.getString("comments.from_id"), 
+                        resultado.getString("comments.from_name"), 
+                        resultado.getString("comments.message"), 
+                        resultado.getString("comments.created_time"),
+                        resultado.getString("comments.likes_count"),
+                        resultado.getString("comments.comments_count"),
+                        resultado.getString("comments.id"),
+                        resultado.getString("avaliacao")
+                ));
             }
             
         } catch (SQLException ex) {
@@ -49,16 +71,36 @@ public class ComentarioFBDao extends ConexaoPGDao {
         return comentario_fb;
     }
     
-    public ArrayList<ComentarioFB> select() {
-        ArrayList<ComentarioFB> comentarios_fb = new ArrayList<ComentarioFB>();
+    public ArrayList<ComentarioFB> selectRuins() {
+        ArrayList<ComentarioFB> comentarios_fb_lista = new ArrayList<ComentarioFB>();
         CriarConexao();
         
         try {
-            resultado = consulta.executeQuery("SELECT * FROM teste_json2");
-            
+            resultado = consulta.executeQuery("SELECT * FROM comentario_fb_avaliados WHERE avaliacao = 'negative'");            
             while (resultado.next()) {                
-                comentarios_fb.add(new ComentarioFB(resultado.getString("from_id"), resultado.getString("from_name"), resultado.getString("message"), resultado.getString("created_time"),
-                        resultado.getDouble("likes_count"), resultado.getString("comments_count"), resultado.getString("id")));
+                comentarios_fb_lista.add(new ComentarioFB(
+                        resultado.getString("row.names"), 
+                        resultado.getString("post.from_id"), 
+                        resultado.getString("post.from_name"), 
+                        resultado.getString("post.message"),
+                        resultado.getString("post.created_time"), 
+                        resultado.getString("post.type"), 
+                        resultado.getString("post.link"), 
+                        resultado.getString("post.id"), 
+                        resultado.getString("post.likes_count"),
+                        resultado.getString("post.comments_count"), 
+                        resultado.getString("post.shares_count"), 
+                        resultado.getString("likes.from_name"), 
+                        resultado.getString("likes.from_id"),
+                        resultado.getString("comments.from_id"), 
+                        resultado.getString("comments.from_name"), 
+                        resultado.getString("comments.message"), 
+                        resultado.getString("comments.created_time"),
+                        resultado.getString("comments.likes_count"),
+                        resultado.getString("comments.comments_count"),
+                        resultado.getString("comments.id"),
+                        resultado.getString("avaliacao")
+                ));
             }
             
         } catch (SQLException ex) {
@@ -67,7 +109,89 @@ public class ComentarioFBDao extends ConexaoPGDao {
             fecharConexao();
         }
         
-        return comentarios_fb;
+        return comentarios_fb_lista;
+    }
+    
+    public ArrayList<ComentarioFB> selectNeutros() {
+        ArrayList<ComentarioFB> comentarios_fb_lista = new ArrayList<ComentarioFB>();
+        CriarConexao();
+        
+        try {
+            resultado = consulta.executeQuery("SELECT * FROM comentario_fb_avaliados WHERE avaliacao = 'neutral'");            
+            while (resultado.next()) {                
+                comentarios_fb_lista.add(new ComentarioFB(
+                        resultado.getString("row.names"), 
+                        resultado.getString("post.from_id"), 
+                        resultado.getString("post.from_name"), 
+                        resultado.getString("post.message"),
+                        resultado.getString("post.created_time"), 
+                        resultado.getString("post.type"), 
+                        resultado.getString("post.link"), 
+                        resultado.getString("post.id"), 
+                        resultado.getString("post.likes_count"),
+                        resultado.getString("post.comments_count"), 
+                        resultado.getString("post.shares_count"), 
+                        resultado.getString("likes.from_name"), 
+                        resultado.getString("likes.from_id"),
+                        resultado.getString("comments.from_id"), 
+                        resultado.getString("comments.from_name"), 
+                        resultado.getString("comments.message"), 
+                        resultado.getString("comments.created_time"),
+                        resultado.getString("comments.likes_count"),
+                        resultado.getString("comments.comments_count"),
+                        resultado.getString("comments.id"),
+                        resultado.getString("avaliacao")
+                ));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ComentarioFBDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+        
+        return comentarios_fb_lista;
+    }
+    
+    public ArrayList<ComentarioFB> selectBons() {
+        ArrayList<ComentarioFB> comentarios_fb_lista = new ArrayList<ComentarioFB>();
+        CriarConexao();
+        
+        try {
+            resultado = consulta.executeQuery("SELECT * FROM comentario_fb_avaliados WHERE avaliacao = 'positive'");            
+            while (resultado.next()) {                
+                comentarios_fb_lista.add(new ComentarioFB(
+                        resultado.getString("row.names"), 
+                        resultado.getString("post.from_id"), 
+                        resultado.getString("post.from_name"), 
+                        resultado.getString("post.message"),
+                        resultado.getString("post.created_time"), 
+                        resultado.getString("post.type"), 
+                        resultado.getString("post.link"), 
+                        resultado.getString("post.id"), 
+                        resultado.getString("post.likes_count"),
+                        resultado.getString("post.comments_count"), 
+                        resultado.getString("post.shares_count"), 
+                        resultado.getString("likes.from_name"), 
+                        resultado.getString("likes.from_id"),
+                        resultado.getString("comments.from_id"), 
+                        resultado.getString("comments.from_name"), 
+                        resultado.getString("comments.message"), 
+                        resultado.getString("comments.created_time"),
+                        resultado.getString("comments.likes_count"),
+                        resultado.getString("comments.comments_count"),
+                        resultado.getString("comments.id"),
+                        resultado.getString("avaliacao")
+                ));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ComentarioFBDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+        
+        return comentarios_fb_lista;
     }
     
     public ArrayList<RespostasBot> aceitarResposta() {
@@ -77,7 +201,9 @@ public class ComentarioFBDao extends ConexaoPGDao {
             
             resultado = consulta.executeQuery("SELECT * FROM bot_respostas WHERE aceita = FALSE");
             while (resultado.next()) {
-                comments.add(new RespostasBot(resultado.getInt("id"), resultado.getBoolean("aceita"), resultado.getString("bot_resposta_texto")));
+                comments.add(new RespostasBot(resultado.getInt("id"), 
+                        resultado.getBoolean("aceita"), 
+                        resultado.getString("bot_resposta_texto")));
             }
             
         } catch (SQLException ex) {
@@ -106,17 +232,17 @@ public class ComentarioFBDao extends ConexaoPGDao {
         return comments;
     }
     
-    public String formular() throws SQLException {        
-        String stmt = "UPDATE teste_json2 SET message='Resposta automatica' WHERE id = ?";
-        preparacao.setString(1, cmt.getId());
-        try {            
-            consulta.executeUpdate(stmt);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ComentarioFBDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            fecharConexao();            
-        }  
-        return null;
-    }
+//    public String formular(ComentarioFB coment) throws SQLException {        
+//        String stmt = "UPDATE teste_json2 SET message='Resposta automatica' WHERE id = ?";
+//        preparacao.setString(1, coment.getId());
+//        try {            
+//            consulta.executeUpdate(stmt);
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ComentarioFBDao.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            fecharConexao();            
+//        }  
+//        return null;
+//    }
 }

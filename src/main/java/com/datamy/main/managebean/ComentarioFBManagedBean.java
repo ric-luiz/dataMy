@@ -35,23 +35,31 @@ public class ComentarioFBManagedBean implements Serializable{
         this.cometario_fb = new ComentarioFB();
     }   
     
-    public ArrayList<ComentarioFB> listarComentarios(){                        
-        return comantario_fb_dao.select();
+    public ArrayList<ComentarioFB> listarComentariosRuins(){                        
+        return comantario_fb_dao.selectRuins();
+    }
+    
+    public ArrayList<ComentarioFB> listarComentariosNeutros(){                        
+        return comantario_fb_dao.selectNeutros();
+    }
+    
+    public ArrayList<ComentarioFB> listarComentariosBons(){                        
+        return comantario_fb_dao.selectBons();
     }
     
     public ArrayList<RespostasBot> getRespostas(){
         return comantario_fb_dao.respostasAceitas();
     }
     
-     public ArrayList<RespostasBot> getRespostasPendentes(){
+    public ArrayList<RespostasBot> getRespostasPendentes(){
         return comantario_fb_dao.aceitarResposta();
     }
      
-    public void formularResposta(){
-        try {
-        	comantario_fb_dao.formular();
-        } catch (SQLException ex) {
-            Logger.getLogger(ComentarioFBManagedBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    public void formularResposta(ComentarioFB coment){
+//        try {
+//        	comantario_fb_dao.formular(coment);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ComentarioFBManagedBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 }

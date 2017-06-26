@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class ComentarioFBDao extends ConexaoPGDao {
     
     ArrayList<ComentarioFB> comentarios_fb;
-    
+    ComentarioFB cmt;  
     public ComentarioFBDao() {
         super();
     }    
@@ -75,9 +75,9 @@ public class ComentarioFBDao extends ConexaoPGDao {
         CriarConexao();
         try {
             
-            resultado = consulta.executeQuery("SELECT bot_resposta_text FROM bot_respostas WHERE aceita = FALSE");
+            resultado = consulta.executeQuery("SELECT * FROM bot_respostas WHERE aceita = FALSE");
             while (resultado.next()) {
-                comments.add(new RespostasBot(resultado.getInt("id"), resultado.getBoolean("aceita"), resultado.getString("textoPublicacao"), resultado.getString("texto")));
+                comments.add(new RespostasBot(resultado.getInt("id"), resultado.getBoolean("aceita"), resultado.getString("bot_resposta_texto")));
             }
             
         } catch (SQLException ex) {
@@ -93,9 +93,9 @@ public class ComentarioFBDao extends ConexaoPGDao {
         CriarConexao();
         try {
             
-            resultado = consulta.executeQuery("SELECT bot_resposta_text FROM bot_respostas WHERE aceita = TRUE");
+            resultado = consulta.executeQuery("SELECT bot_resposta_textoo FROM bot_respostas WHERE aceita = TRUE");
             while (resultado.next()) {
-                comments.add(new RespostasBot(resultado.getInt("id"), resultado.getBoolean("aceita"), resultado.getString("textoPublicacao"), resultado.getString("texto")));
+                comments.add(new RespostasBot(resultado.getInt("id"), resultado.getBoolean("aceita"), resultado.getString("bot_resposta_texto")));
             }
             
         } catch (SQLException ex) {
@@ -106,12 +106,12 @@ public class ComentarioFBDao extends ConexaoPGDao {
         return comments;
     }
     
-    public String formular(String comentario, int id) throws SQLException {        
-        comentario = "UPDATE bot_resposta SET bot_resposta_text='fora temer' WHERE id = ?";
-        preparacao.setInt(1, id);
+    public String formular() throws SQLException {        
+        String stmt = "UPDATE teste_json2 SET message='Resposta automatica' WHERE id = ?";
+        preparacao.setString(1, cmt.getId());
         try {            
-            consulta.executeUpdate(comentario);
-            return comentario;
+            consulta.executeUpdate(stmt);
+            
         } catch (SQLException ex) {
             Logger.getLogger(ComentarioFBDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

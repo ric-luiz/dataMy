@@ -6,6 +6,7 @@
 package com.datamy.main.dao;
 
 import com.datamy.main.connection.connectionFactory.ConexaoMSQLDao;
+import com.datamy.main.connection.connectionFactory.ConexaoPGDao;
 import com.datamy.main.bean.CompraRelatorio;
 import com.datamy.main.bean.Estatistica;
 import com.datamy.main.bean.Facebook;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GraficosDAO extends ConexaoMSQLDao {
+public class GraficosDAO extends ConexaoPGDao {
     public ArrayList<Twitter> getDadosTwitter(){
         
         CriarConexao();

@@ -6,6 +6,7 @@
 package com.datamy.main.dao;
 
 import com.datamy.main.connection.connectionFactory.ConexaoMSQLDao;
+import com.datamy.main.connection.connectionFactory.ConexaoPGDao;
 import com.datamy.main.bean.RelatorioChamados;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Dextter
  */
-public class RelatorioChamadosDao extends ConexaoMSQLDao{
+public class RelatorioChamadosDao extends ConexaoPGDao{
      ArrayList<RelatorioChamados> relatorios;                
     
     public RelatorioChamadosDao() {       

@@ -12,7 +12,6 @@ package com.datamy.main.bean;
 public class RespostasBot {
     private int id;
     private boolean aceita;
-    private String textoPulicacao;
     private String texto;
 
     public int getId() {
@@ -31,14 +30,6 @@ public class RespostasBot {
         this.aceita = aceita;
     }
 
-    public String getTextoPulicacao() {
-        return textoPulicacao;
-    }
-
-    public void setTextoPulicacao(String textoPulicacao) {
-        this.textoPulicacao = textoPulicacao;
-    }
-
     public String getTexto() {
         return texto;
     }
@@ -50,10 +41,9 @@ public class RespostasBot {
     public RespostasBot() {
     }
 
-    public RespostasBot(int id, boolean aceita, String textoPublicacao, String texto) {
+    public RespostasBot(int id, boolean aceita, String texto) {
         this.id = id;
         this.aceita = aceita;
-        this.textoPulicacao = textoPublicacao;
         this.texto = texto;
     }
     

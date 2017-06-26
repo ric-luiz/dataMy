@@ -83,7 +83,7 @@
                             <a href="atenderChamado.xhtml"><i class="glyphicon glyphicon-phone-alt"></i> Atender Chamados</a>
                         </li>
                         <li>
-                            <a href="relatorioChamados.xhtml"><i class="glyphicon glyphicon-list-alt"></i> Relatórios de Chamados</a>
+                            <a href="relatorioChamados_old.xhtml"><i class="glyphicon glyphicon-list-alt"></i> Relatórios de Chamados</a>
                         </li>
                     </ul>
                     <!--
@@ -125,28 +125,28 @@
                                         <table class="table table-bordered table-hover table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>id origem</th>
-                                                    <th>nome origem</th>
-                                                    <th>mensagem</th>
-                                                    <th>hora criaçao</th>
-                                                    <th>contador de likes</th>
-                                                    <th>contador de comentarios</th>
-                                                    <th>id</th>
+                                                    <th>Ordem</th>
+                                                    <th>Tipo</th>
+                                                    <th>Situação</th>
+                                                    <th>Título</th>
+                                                    <th>Descrição</th>
+                                                    <th>Data Inicio</th>
+                                                    <th>Autor</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <ui:repeat value="#{comentario.listarComentarios()}" var="comentarios">
+                                                <ui:repeat value="#{chamado.findChamados()}" var="chamados">
                                                     <tr>
-                                                        <td><h:outputText value="#{comentarios.from_id}" /></td>
-                                                        <td><h:outputText value="#{comentarios.from_name}" /></td>
-                                                        <td><h:outputText value="#{comentarios.message}" /></td>
-                                                        <td><h:outputText value="#{comentarios.created_time}" /></td>
-                                                        <td><h:outputText value="#{comentarios.likes_count}" /></td>
-                                                        <td><h:outputText value="#{comentarios.comments_count}" /></td>
-                                                        <td><h:outputText value="#{comentarios.id}" /></td>
+                                                        <td><h:outputText value="#{chamados.id}" /></td>
+                                                        <td><h:outputText value="#{chamados.tipo}" /></td>
+                                                        <td><h:outputText value="#{chamados.status}" /></td>
+                                                        <td><h:outputText value="#{chamados.titulo}" /></td>
+                                                        <td><h:outputText value="#{chamados.descricao}" /></td>
+                                                        <td><h:outputText value="#{chamados.dataInicio}" /></td>
+                                                        <td><h:outputText value="#{chamados.user.nome}" /></td>
                                                         <td>
                                                             <h:form>
-                                                                <h:commandLink action="#{comentario.formularResposta()}" value="Analisar"/>                                                            
+                                                                <h:commandLink class="#{chamado.verificarChamadoColor(chamados)}" value="#{chamado.verificarChamadoName(chamados)}" action="#{chamado.verificarChamdoLink(chamados)}"/>                                                            
                                                             </h:form>
                                                         </td>
                                                         <td><a href="#"><i class="glyphicon glyphicon-share-alt"></i></a></td>

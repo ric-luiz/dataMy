@@ -1,6 +1,5 @@
 package com.datamy.main.dao;
 
-import com.datamy.main.connection.connectionFactory.ConexaoMSQLDao;
 import com.datamy.main.connection.connectionFactory.ConexaoPGDao;
 import com.datamy.main.bean.Usuario;
 import java.sql.SQLException;
@@ -107,8 +106,14 @@ public class UsuarioDao extends ConexaoPGDao{
      */
     public void insert(Usuario user){
         CriarConexao();
+        System.out.println("parametrossssssssssssssssssssssssssssss");
+        System.out.println(user.getNome());
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
+        System.out.println(user.getEmail());
+        System.out.println(user.getCpf());
         try {
-            preparacao = conexao.prepareStatement("INSERT INTO `usuario`(`nomecompleto`,`username`, `password`, `email`, `cpf`) VALUES (?,?,?,?,?)");
+            preparacao = conexao.prepareStatement("INSERT INTO usuario(nomecompleto, username, password, email, cpf) VALUES(?,?,?,?,?)");
             preparacao.setString(1, user.getNome());
             preparacao.setString(2, user.getUsername());
             preparacao.setString(3, user.getPassword());

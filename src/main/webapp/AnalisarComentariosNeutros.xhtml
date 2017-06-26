@@ -32,25 +32,23 @@
                                 <table class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th>id origem</th>
-                                            <th>nome origem</th>
-                                            <th>mensagem</th>
-                                            <th>hora criaçao</th>
-                                            <th>contador de likes</th>
-                                            <th>contador de comentarios</th>
-                                            <th>id</th>
+                                            <th>Mensagem do post</th>
+                                            <th>Reações</th>
+                                            <th>Publicado por</th>
+                                            <th>Link da postagem</th>                                            
+                                            <th>Contador de comentarios</th>
+                                            <th>Mensagem do cliente</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <ui:repeat value="#{comentario.listarComentarios()}" var="comentarios">
+                                        <ui:repeat value="#{comentario.listarComentariosNeutros()}" var="comentarios">
                                             <tr>
-                                                <td><h:outputText value="#{comentarios.from_id}" /></td>
-                                                <td><h:outputText value="#{comentarios.from_name}" /></td>
-                                                <td><h:outputText value="#{comentarios.message}" /></td>
-                                                <td><h:outputText value="#{comentarios.created_time}" /></td>
-                                                <td><h:outputText value="#{comentarios.likes_count}" /></td>
-                                                <td><h:outputText value="#{comentarios.comments_count}" /></td>
-                                                <td><h:outputText value="#{comentarios.id}" /></td>
+                                                <td><h:outputText value="#{comentarios.postMessage}" /></td>
+                                                <td><h:outputText value="#{comentarios.postLikesCount}" /></td>
+                                                <td><h:outputText value="#{comentarios.postFromName}" /></td>
+                                                <td><h:outputText value="#{comentarios.postLink}" /></td>
+                                                <td><h:outputText value="#{comentarios.postCommentsCount}" /></td>
+                                                <td><h:outputText value="#{comentarios.commentsMessage}" /></td>                                                
                                                 <td>
                                                     <h:form>
                                                         <h:commandLink action="#{comentario.formularResposta(comentarios)}" value="Analisar"/>                                                            

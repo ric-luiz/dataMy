@@ -76,7 +76,6 @@ public class ComentarioFBDao extends ConexaoPGDao {
         CriarConexao();
         
         try {
-            //adicionar no where visto = FALSE 
             resultado = consulta.executeQuery("SELECT * FROM comentario_fb_avaliados WHERE avaliacao = 'negative'");            
             while (resultado.next()) {                
                 comentarios_fb_lista.add(new ComentarioFB(
@@ -118,7 +117,6 @@ public class ComentarioFBDao extends ConexaoPGDao {
         CriarConexao();
         
         try {
-            //adicionar no where visto = FALSE 
             resultado = consulta.executeQuery("SELECT * FROM comentario_fb_avaliados WHERE avaliacao = 'neutral'");            
             while (resultado.next()) {                
                 comentarios_fb_lista.add(new ComentarioFB(
@@ -160,7 +158,6 @@ public class ComentarioFBDao extends ConexaoPGDao {
         CriarConexao();
         
         try {
-            //adicionar no where visto = FALSE 
             resultado = consulta.executeQuery("SELECT * FROM comentario_fb_avaliados WHERE avaliacao = 'positive'");            
             while (resultado.next()) {                
                 comentarios_fb_lista.add(new ComentarioFB(

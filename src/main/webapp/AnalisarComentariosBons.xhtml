@@ -6,65 +6,9 @@
                 template="./dataMyFace.xhtml">
 
     <ui:define name="content">
-        <style>
-            .btn{
-                background:rgba(0,0,0,8.75)!important;
-            }
-            .popup {
-                width:100%;
-                height:100%;
-                display:none;
-                position:fixed;
-                top:0px;
-                left:0px;
-                background:rgba(0,0,0,0.75);
-            }
 
-            /* Inner */
-            .popup-inner {
-                max-width:700px;
-                width:90%;
-                padding:40px;
-                position:absolute;
-                top:50%;
-                left:50%;
-                -webkit-transform:translate(-50%, -50%);
-                transform:translate(-50%, -50%);
-                box-shadow:0px 2px 6px rgba(0,0,0,1);
-                border-radius:3px;
-                background:#fff;
-            }
-
-            /* Close Button */
-            .popup-close {
-                width:30px;
-                height:30px;
-                padding-top:4px;
-                display:inline-block;
-                position:absolute;
-                top:0px;
-                right:0px;
-                transition:ease 0.25s all;
-                -webkit-transform:translate(50%, -50%);
-                transform:translate(50%, -50%);
-                border-radius:1000px;
-                background:rgba(0,0,0,0.8);
-                font-family:Arial, Sans-Serif;
-                font-size:20px;
-                text-align:center;
-                line-height:100%;
-                color:#fff;
-            }
-
-            .popup-close:hover {
-                -webkit-transform:translate(50%, -50%) rotate(180deg);
-                transform:translate(50%, -50%) rotate(180deg);
-                background:rgba(5,5,0,1);
-                text-decoration:none;
-            }
-        </style>
         <div class="container-fluid">
-<br/><br/><br/>
+            <br/><br/><br/>
             <div class="col-lg-10 col-lg-offset-2">
                 <div class="col-lg-12">
                     <h1 class="page-header"> <img src="resources/imagens/datamy.png"/>
@@ -74,21 +18,21 @@
             </div>
 
             <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">
-                                
-                            </h1>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-dashboard"></i>  <a href="home.xhtml">Home</a> / <i class="fa fa-edit"></i> Comentarios  do Facebook
-                                </li>
-<!--                            <li class="active">
-                                    <i class="fa fa-edit"></i> Suporte
-                                </li>-->
-                            </ol>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i>  <a href="home.xhtml">Home</a> / <i class="fa fa-edit"></i> Comentarios  do Facebook
+                        </li>
+                        <!--                            <li class="active">
+                                                            <i class="fa fa-edit"></i> Suporte
+                                                        </li>-->
+                    </ol>
+                </div>
+            </div>
             <!--
             End Migalhas de pão e títulos e subtitulos
             ========================== -->
@@ -133,10 +77,10 @@
                                                             <br/>
                                                             <h5>Comentario: <h:outputText value="#{comentarios.commentsMessage}"/></h5>
                                                             <br/>
-                                                            
+
                                                             <p>Resposta: <h:inputText value="#{comentarios.commentsFromName}, somos gratos por sua avaliação! Faremos bom uso do seu comentário de modo a melhorar nossos serviços!"/></p>
                                                             <p><a data-popup-close="popup-#{comentarios.rowNames}" href="#">Fechar</a><a data-popup-close="popup-1" href="#">Publicar</a></p>
-                                                            
+
                                                             <a class="popup-close" data-popup-close="popup-#{comentarios.rowNames}" href="#">x</a>
                                                         </div>
                                                     </div>                                                    
@@ -156,25 +100,7 @@
 
         </div>
         <!-- /.container-fluid -->
-        <script>
-            $(function () {
-                //----- OPEN
-                $('[data-popup-open]').on('click', function (e) {
-                    var targeted_popup_class = jQuery(this).attr('data-popup-open');
-                    $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
 
-                    e.preventDefault();
-                });
-
-                //----- CLOSE
-                $('[data-popup-close]').on('click', function (e) {
-                    var targeted_popup_class = jQuery(this).attr('data-popup-close');
-                    $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
-
-                    e.preventDefault();
-                });
-            });
-        </script>
     </ui:define>
 
 </ui:composition>

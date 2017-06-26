@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <!-- CSS -->
         <link href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled.min.css" rel="stylesheet"/>
-<!--        Google Fonts
-        ============================================= -->
+        <!--        Google Fonts
+                ============================================= -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css" />
 
         <!--
@@ -54,6 +54,63 @@
                 background-repeat: no-repeat; 
                 background-position: center center; 
                 background-attachment: fixed;
+            }
+
+            /*            estilo dos botoes das paginas de analise de comentarios*/
+            .btn{
+                background:rgba(0,0,0,8.75)!important;
+            }
+            .popup {
+                width:100%;
+                height:100%;
+                display:none;
+                position:fixed;
+                top:0px;
+                left:0px;
+                background:rgba(0,0,0,0.75);
+            }
+
+            /* Inner */
+            .popup-inner {
+                max-width:700px;
+                width:90%;
+                padding:40px;
+                position:absolute;
+                top:50%;
+                left:50%;
+                -webkit-transform:translate(-50%, -50%);
+                transform:translate(-50%, -50%);
+                box-shadow:0px 2px 6px rgba(0,0,0,1);
+                border-radius:3px;
+                background:#fff;
+            }
+
+            /* Close Button */
+            .popup-close {
+                width:30px;
+                height:30px;
+                padding-top:4px;
+                display:inline-block;
+                position:absolute;
+                top:0px;
+                right:0px;
+                transition:ease 0.25s all;
+                -webkit-transform:translate(50%, -50%);
+                transform:translate(50%, -50%);
+                border-radius:1000px;
+                background:rgba(0,0,0,0.8);
+                font-family:Arial, Sans-Serif;
+                font-size:20px;
+                text-align:center;
+                line-height:100%;
+                color:#fff;
+            }
+
+            .popup-close:hover {
+                -webkit-transform:translate(50%, -50%) rotate(180deg);
+                transform:translate(50%, -50%) rotate(180deg);
+                background:rgba(5,5,0,1);
+                text-decoration:none;
             }
         </style>
     </head>
@@ -110,37 +167,37 @@
                                 </div>
                             </li>
                             <li><a href="index.xhtml"><i class="fa fa-fw fa-power-off"></i>Sair<i class="fa fa-angle-down rotate-icon"></i></a></li>
-                            
-<!--                            <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i>Menu<i class="fa fa-angle-down rotate-icon"></i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="#" class="waves-effect">SubMenu</a>
-                                        </li>
-                                        <li><a href="#" class="waves-effect">SubMenu</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i>Menu<i class="fa fa-angle-down rotate-icon"></i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="#" class="waves-effect">SubMenu</a>
-                                        </li>
-                                        <li><a href="#" class="waves-effect">SubMenu</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i>Menu<i class="fa fa-angle-down rotate-icon"></i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="#" class="waves-effect">SubMenu</a>
-                                        </li>
-                                        <li><a href="#" class="waves-effect">SubMenu</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>-->
+
+                            <!--                            <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i>Menu<i class="fa fa-angle-down rotate-icon"></i></a>
+                                                            <div class="collapsible-body">
+                                                                <ul>
+                                                                    <li><a href="#" class="waves-effect">SubMenu</a>
+                                                                    </li>
+                                                                    <li><a href="#" class="waves-effect">SubMenu</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-eye"></i>Menu<i class="fa fa-angle-down rotate-icon"></i></a>
+                                                            <div class="collapsible-body">
+                                                                <ul>
+                                                                    <li><a href="#" class="waves-effect">SubMenu</a>
+                                                                    </li>
+                                                                    <li><a href="#" class="waves-effect">SubMenu</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-envelope-o"></i>Menu<i class="fa fa-angle-down rotate-icon"></i></a>
+                                                            <div class="collapsible-body">
+                                                                <ul>
+                                                                    <li><a href="#" class="waves-effect">SubMenu</a>
+                                                                    </li>
+                                                                    <li><a href="#" class="waves-effect">SubMenu</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>-->
                         </ul>
                     </li>
                     <!-- Links de navegação dos formulários -->
@@ -162,9 +219,9 @@
 
                     <!--Links para navegação da barra superior-->
                     <ul class="nav navbar-nav ml-auto flex-row">
-<!--                        <li class="nav-item">
-                            <a class="nav-link" ><i class="fa fa-envelope" style="color: #FFF"></i> <span class="hidden-sm-down" style="color: #FFF">Contato</span></a>
-                        </li>-->
+                        <!--                        <li class="nav-item">
+                                                    <a class="nav-link" ><i class="fa fa-envelope" style="color: #FFF"></i> <span class="hidden-sm-down" style="color: #FFF">Contato</span></a>
+                                                </li>-->
                         <li class="nav-item">
                             <a class="nav-link" href="abrirChamado.xhtml"><i class="fa fa-comments-o" style="color: #FFF"></i> <span class="hidden-sm-down" style="color: #FFF">Suporte</span></a>
                         </li>
@@ -178,7 +235,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#"><i class="fa fa-fw fa-user"></i>Perfil</a>
                                 <a class="dropdown-item" href="#"><i class="fa fa-fw fa-envelope"></i>Mensagem</a>
-<!--                                <a class="dropdown-item" href="#"><i class="fa fa-fw fa-power-off"></i>Sair</a>-->
+                                <!--                                <a class="dropdown-item" href="#"><i class="fa fa-fw fa-power-off"></i>Sair</a>-->
                             </div>
                         </li>
                     </ul>
@@ -225,7 +282,7 @@
                 <!--Rodapé-->
             </ui:insert>
         </div>
-        
+
         <!-- SCRIPTS -->
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/compiled.min.js"></script>
 
@@ -234,6 +291,26 @@
 
             var el = document.querySelector('.custom-scrollbar');
             Ps.initialize(el);
+
+            //script dos botoes das paginas de analise de comentario            
+            $(function () {
+                //----- OPEN
+                $('[data-popup-open]').on('click', function (e) {
+                    var targeted_popup_class = jQuery(this).attr('data-popup-open');
+                    $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+
+                    e.preventDefault();
+                });
+
+                //----- CLOSE
+                $('[data-popup-close]').on('click', function (e) {
+                    var targeted_popup_class = jQuery(this).attr('data-popup-close');
+                    $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+
+                    e.preventDefault();
+                });
+            });
+
         </script>
     </h:body>
 

@@ -6,35 +6,36 @@
 
     <ui:define name="content">
         <div class="container-fluid">
-<br/><br/><br/>
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i>  <a href="home.xhtml">Home</a> / <i class="fa fa-edit"></i> Comentarios  do Facebook
+                        </li>
+                        <!--                            <li class="active">
+                                                            <i class="fa fa-edit"></i> Suporte
+                                                        </li>-->
+                    </ol>
+                </div>
+            </div>
+
+            <!--
+            End Migalhas de pão e títulos e subtitulos
+            ========================== -->
             <div class="col-lg-10 col-lg-offset-2">
                 <div class="col-lg-12">
-                    <h1 class="page-header"> <img src="resources/imagens/datamy.png"/>
+                    <h1 class="page-header"> 
+                        <img src="resources/imagens/datamy.png"/><br/>
                         Comentarios  do Facebook <small>Visão geral</small>
                     </h1>
                 </div>
             </div>
-            
-            <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">
-                                
-                            </h1>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-dashboard"></i>  <a href="home.xhtml">Home</a> / <i class="fa fa-edit"></i> Comentarios  do Facebook
-                                </li>
-<!--                            <li class="active">
-                                    <i class="fa fa-edit"></i> Suporte
-                                </li>-->
-                            </ol>
-                        </div>
-                    </div>
-   
-            <!--
-            End Migalhas de pão e títulos e subtitulos
-            ========================== -->
+
+
 
             <!--
             Painel
@@ -68,9 +69,9 @@
                                                 <td><h:outputText value="#{comentarios.postCommentsCount}" /></td>
                                                 <td><h:outputText value="#{comentarios.commentsMessage}" /></td>                                                
                                                 <td>
-                                                    <a class="btn" data-popup-open="popup-1" href="#">Responder</a>
+                                                    <a class="btn" data-popup-open="popup-#{comentarios.likesFromId}" href="#">Responder</a>
 
-                                                    <div class="popup" data-popup="popup-1">
+                                                    <div class="popup" data-popup="popup-#{comentarios.likesFromId}">
                                                         <div class="popup-inner">
                                                             <h2>Responder ao comentario de <h:outputText value="#{comentarios.commentsFromName}"/></h2>
                                                             <br/>
@@ -78,9 +79,9 @@
                                                             <br/>
 
                                                             <p>Resposta: <h:inputText value="#{comentarios.commentsFromName}, somos gratos por sua avaliação! Faremos bom uso do seu comentário de modo a melhorar nossos serviços!"/></p>
-                                                            <p><a data-popup-close="popup-1" href="#">Fechar</a><a data-popup-close="popup-1" href="#">Publicar</a></p>
+                                                            <p><a data-popup-close="popup-#{comentarios.likesFromId}" href="#">Fechar</a><a data-popup-close="popup-#{comentarios.likesFromId}" href="#">Publicar</a></p>
 
-                                                            <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+                                                            <a class="popup-close" data-popup-close="popup-#{comentarios.likesFromId}" href="#">x</a>
                                                         </div>
                                                     </div>                                                    
                                                 </td>
